@@ -38,8 +38,8 @@ tags:
 
 
 ## 参考来源：
-- [github](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese, "github")
-- [知乎](https://www.zhihu.com/question/27239198?rf=24827633,"知乎Anonymous")
+- [github](https://github.com/imhuay/Algorithm_Interview_Notes-Chinese)
+- [知乎](https://www.zhihu.com/question/27239198?rf=24827633)
 
 
 
