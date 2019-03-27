@@ -164,10 +164,88 @@ public:
     }
 };
 ```
+```c
+priority_queue<int> xxx 大根堆
+priority_queue<int, vector<int>, greater<int>> xxxx 小根堆
+```
 
+### 3 重复元素
+一个大小为n的数组，里面的数都属于范围[0, n-1]，有不确定的重复元素，找到至少一个重复元素
+https://blog.csdn.net/SunnyYoona/article/details/43883519
 
+有n+1个属于1～n的数，只有一个重复的数，求出来：所有数相加-（1+...n)
 
+### 4 全排列，LeetCode 46. Permutations
 
+```c
+class Solution {
+public:
+    vector<vector<int>> ans;
+    vector<vector<int>> permute(vector<int>& nums) {
+        dfs(nums,0);
+        return ans;   
+    }
+    void dfs(vector<int> nums,int pos){
+        if(pos==nums.size()-1)
+        {
+            ans.push_back(nums);
+            return;
+        }
+        for(int i=pos;i<nums.size();i++){ //这里写错了，是i=pos
+            swap(nums[i],nums[pos]);
+            dfs(nums,pos+1);
+            swap(nums[i],nums[pos]);
+         }  
+        
+    }
+   
+};
+
+```
+### 5 LeetCode98 验证二叉搜索树
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+class Solution {
+public:
+    bool isValidBST(TreeNode* root) {
+        bool res;
+        long long max=LLONG_MAX;
+        long long min=LLONG_MIN;
+        res=dfs(root,max,min);
+        if(root==NULL)
+            return true;
+        if(root->left==NULL && root->right==NULL)
+            return true;
+        return res;
+        
+    }
+    bool dfs(TreeNode* root,long long max,long long min){
+        if(root==NULL)
+            return true;
+        
+        bool a=true;
+        bool b=true;
+        
+        if(root->left) a =dfs(root->left,root->val,min);
+        if(root->right) b=dfs(root->right,max,root->val);
+        bool c=root->val>min && root->val<max;
+        return a&&b&&c;
+        
+        
+    }
+};
+
+```
+### Softmax
 
 
 
