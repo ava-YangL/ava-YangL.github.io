@@ -6,13 +6,12 @@ categories:
 tags:
 - DFS
 - Leetcode
-- 深度学习
 - 基础知识 
 ---
 感觉遇到这种题自己总是不会，整理下来希望能长长脑子。
 <!--more-->
 
-### 1 电话号码问题,Leetcode17
+### 1 电话号码问题,Leetcode17 （这个题我大概是会了）
 ![avater](1.jpg)
 
 ```c
