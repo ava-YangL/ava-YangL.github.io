@@ -694,7 +694,7 @@ public:
     }
 };
 ```
-##### Leetcode 146. LRU Cache Hard
+##### 7 Leetcode 146. LRU Cache Hard
 
 ```c
 class LRUCache {
@@ -743,4 +743,102 @@ public:
 };
 
 
+```
+##### 8 Leetcode 91
+1、O(2^n)，DFS更适合求全部解码的结果，而不是计算有多少种解码的方法。
+2、O(n)
+DFS 显示超时。（自己写的，也不知道对不对）
+```c
+class Solution {
+public:
+    int numDecodings(string s) {
+        int ans=0;
+        dfs(0,s,ans);
+        return ans;    
+    }
+    void dfs(int pos,string s,int & ans){
+        if(pos>s.length()) 
+            return;
+        if(pos==(s.length()))
+        {
+            ans+=1;
+            return;
+        }
+         if( s[pos]>='1' && s[pos]<='9')
+        {           
+            dfs(pos+1,s,ans);
+        }
+                
+         if((s[pos]=='1' && s[pos+1] <='9') || (s[pos]=='2' && s[pos+1]>='0' && s[pos+1]<='6' ))
+        {
+            dfs(pos+2,s,ans);
+        }
+        
+    }
+};
+
+```
+动态规化
+这个破题0好难处理啊，处理到这个数，如果这个数==0，就只能等于i-2了，就是这个只能是>10的了。如果这个数不是0，那么判断一下是i-1还是i-2啊。
+```c
+class Solution {
+public:
+    int numDecodings(string s) {
+        int num=s.length();
+        vector<int> mark;
+        if(num==0) return 0;
+        //对第一个数的处理
+        if(s[0]>='1' && s[0]<='9')
+            mark.push_back(1);
+        else
+            mark.push_back(0);
+        //从第2个开始处理
+        for(int i=1;i<num;i++){
+            int tempans=0;
+            if(s[i]=='0')
+            {//这个数是0 前面的必须<=2 且 他的值就只等于-2的值了
+                if(s[i-1]>='1' && s[i-1]<='2')
+                if((i-2)<0)
+                    tempans=1;
+                else
+                    tempans=mark[i-2];          
+            }
+            else{//这个数不是0，等于-1 和 -2的和
+             if(s[i]>='1' && s[i]<='9')
+                    tempans+=mark[i-1];
+            if(s[i-1]=='1' || (s[i-1]=='2' && s[i]>'0' && s[i]<='6'))
+            {
+                if((i-2)<0)
+                    tempans+=1;
+                else
+                    tempans+=(mark[i-2]);
+            }              
+            }
+            mark.push_back(tempans);
+        }
+        return mark[num-1];
+    }
+
+};
+
+```
+别人写的动态规划就很简单啊！
+```c
+public:
+    int numDecodings(string s) 
+    {
+        if (s.length() <= 0)
+            return s.length();
+        vector<int> dp(s.length() + 1, 0);
+        dp[0] = 1;
+        dp[1] = s[0]=='0'?0:1;
+        for (int i = 2; i <= s.length(); i++)
+        {
+            if (s[i-1] != '0')//前一个不是0 i-1就加上去 前1个是0 就只能是i-2le 
+                dp[i] = dp[i - 1];
+            if (s[i - 2] != '0' && stoi(s.substr(i-2,2))<=26)
+                dp[i] += dp[i - 2];
+        }
+        return dp[s.length()];
+    }
 ```
