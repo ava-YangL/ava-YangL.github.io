@@ -619,7 +619,7 @@ public:
     }
 };
 ```
-##### 6
+##### 6 旋转数组找某值 Leetcode33
 一开始，right或者left处的边界总是出错， 所以在 while 循环里面加了对于边界的判断才过了。
 
 ```c
@@ -693,4 +693,54 @@ public:
         
     }
 };
+```
+##### Leetcode 146. LRU Cache Hard
+
+```c
+class LRUCache {
+private:
+    int cap;
+    list<int> recent; //存的key
+    unordered_map<int,int> cache; //key value
+    unordered_map<int,list<int>::iterator> pos; //key pos
+public:
+    LRUCache(int capacity) {
+        cap=capacity;        
+    }
+    
+    int get(int key) 
+    {
+        if(cache.find(key)!=cache.end()){
+            
+            //list<int>::position=pos[key];
+            recent.erase(pos[key]);
+            recent.push_front(key);
+            //cache是不用变得
+            pos[key]=recent.begin();
+            
+            
+            return cache[key];
+        }else
+            return -1;
+    }
+        
+    void put(int key, int value) {
+        if(recent.size()>=cap && pos.find(key)==pos.end()){ //这里的put可能是替换 所以这一步不一定会执行
+            int old=recent.back();
+            recent.pop_back();
+            cache.erase(old);
+            pos.erase(old);//似乎map可以直接erase 但list不行 list要用迭代器 可以erasekey吗
+        }
+        //反正是插入，所以cache和pos是不用变了,pos位置还是要变得
+        if(pos.find(key)!=pos.end()){
+            recent.erase(pos[key]);
+        }
+        recent.push_front(key);
+        pos[key]=recent.begin();
+        //不管原先存不存在 都可以赋值，就是保证三个都变
+        cache[key]=value;     
+    }
+};
+
+
 ```
