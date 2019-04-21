@@ -250,5 +250,301 @@ public:
 ```
 ### Softmax
 
+--------------------------------------------------------------------------------------------
+2019年4月编码准备
 
+##### 1 二叉树最小深度
+###### 1 递归方法，左树不存在，右树高度加1；右树不存在，左树高度加1；左右树都存在，最小高度+1。
+```c
+ int run(TreeNode *root) {
+        if (root==NULL)
+            return 0;
+        if(root->left==NULL && root->right==NULL)
+        {
+            return 1;
+        }
+        if(root->left==NULL) return 1+run(root->right);
+        if(root->right==NULL) return 1+run(root->left);
+        int depthl=0;
+        int depthr=0;
+        if(root->left) depthl=run(root->left);
+        if(root->right) depthr=run(root->right);
+        return 1+min(depthl,depthr);
 
+    }
+```
+###### 2 广度优先，层序遍历，遇到第一个叶子节点的时候
+```c
+ int run(TreeNode *root) {
+         if(root == NULL) return 0;
+         queue<TreeNode *>q;
+         q.push(root);
+         int depth=1;
+         while(!q.empty()){
+             int i=0;
+             int len=q.size();
+             for(i=0;i<len;i++){  //这里要写len 不能写q.size()因为q一直在变？
+                 TreeNode *temp=q.front();
+                 q.pop();
+                 if(temp->left==NULL && temp->right==NULL) return depth;
+                 if(temp->left) q.push(temp->left);
+                 if(temp->right) q.push(temp->right);
+             }
+             if(i==len) //跳出来 不是等于len-1啊
+                 depth++;
+         }
+         
+         return depth;
+    }
+```
+##### 2 链表排序Onlogn
+###### 1 归并排序，找到中间节点（一个两步，一个一步），然后断开链表，然后合并两个断开的链表。用递归的方法。
+
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *sortList(ListNode *head) {
+        if(head==NULL || head->next==NULL) return head;
+        ListNode * p=head;
+        ListNode * q=head->next;
+        while(p!=NULL && q!=NULL && q->next!=NULL) //不加q->next!=NULL的判断就会内存超限
+        {
+            p=p->next;
+            if(q->next)
+                q=q->next->next;
+            else
+                q=q->next;
+        }
+        //返回合并后的链表的右边
+        ListNode *right=sortList(p->next);
+        //返回链表的左边
+        p->next=NULL;//断开
+        ListNode *left=sortList(head);
+        //合并
+        return merge(left,right);
+        
+        
+    }
+    ListNode * merge(ListNode * left,ListNode * right){
+        if(left==NULL && right==NULL)
+            return NULL;
+        if(left==NULL)
+            return right;
+        if(right==NULL)
+            return left;
+        ListNode dummy(-1); //这样写，以前都是直接new的没有释放掉
+        ListNode *p= &dummy;
+        while(left!=NULL && right!=NULL)
+        {
+            if(left->val > right->val)
+            {
+                p->next=right;
+                p=p->next;
+                right=right->next;
+            }else{
+                p->next=left;
+                p=p->next;
+                left=left->next;
+            }
+            
+        }
+        if(left!=NULL)  p->next=left;
+        if(right!=NULL) p->next=right;
+        return dummy.next; //注意这里是next哦
+    }
+};
+```
+###### 2 快排的改进版本（注意本身的快排自己最好动手写一下）
+因为链表没办法往前（j--）
+所以这里是，两个指针往后挪，来找到key应该在的partition的位置的。
+p=head;q=head->next; 遇到q比key小，p=p->next, 交换pq。
+最后需要记得把p的位置的值和key位置的值进行交换。
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getParti(ListNode * head,ListNode * end){
+        if(head==NULL || head->next==NULL) 
+            return head;     
+        int key=head->val; 
+        ListNode *p=head;
+        ListNode *q=head->next;
+        //q的值比p小，p往后挪一下，交换。
+        while(q!=end){
+            if(q->val < key){
+                p=p->next;
+                swap(p->val,q->val);
+            }
+            q=q->next;
+        }
+        swap(head->val,p->val);//p还是p->next,是p因为最后p的位置是比key小的最后一个位置。
+        //再把这个小数换到前面就好了
+        return p;
+    }
+    
+   void quickSort(ListNode *head,ListNode *end){
+       //if(head==NULL || end==NULL || head==end) //一开始这里写了这句话，这样就直接跳过了
+           //return;
+        if(head!=end){
+            ListNode *mid=getParti(head,end);
+            quickSort(head,mid);
+            quickSort(mid->next,end);
+        }
+    }
+    
+    ListNode *sortList(ListNode *head) {
+        //能通过指针的操作直接改变值？ 所以quicksort没有返回值可行
+        quickSort(head,NULL);
+        return head;
+    }
+};
+```
+
+##### 3 Two Sum
+###### 基本知识
+1 地址：https://leetcode.com/problems/two-sum/
+- list支持快速的插入和删除，查找费时
+- vector支持快速的查找，插入费时
+- STL的map底层是用红黑树（平衡二叉树？）存储的，查找时间复杂度是log(n)级别；
+- 2、STL的hash_map底层是用hash表存储的，查询时间复杂度是常数级别；
+- 3、什么时候用map，什么时候用hash_map?
+  这个要看具体的应用，不一定常数级别的hash_ map一定比log(n)级别的map要好，hash_ map的hash函数以及解决地址冲突等都要耗时，而且众所周知hash表是以空间效率来换时间效率（时间效率一般是常数级别？）的，因而hash_ map的内存消耗肯定要大。一般情况下，如果记录数非常大时，考虑hash_ map，查找效率会高很多，如果要考虑内存消耗，则要谨慎使用hash_map。
+```C
+#include <map>
+map<string, string> namemap;
+namemap["东方不败"]="第一高手，葵花宝典";
+//查找。。
+if(namemap.find("岳不群") != namemap.end()){
+        ...
+}
+
+#include <hash_map>
+
+hash_map<int, string> mymap;
+mymap[9527]="唐伯虎点秋香";
+
+ ...
+if(mymap.find(10000) != mymap.end()){
+    ...
+}
+```
+C++ STL中，哈希表对应的容器是 unordered_ map（since C++ 11）。根据 C++ 11 标准的推荐，用 unordered_ map 代替 hash_ map。
+```c
+#include <unordered_map>
+```
+
+###### 两个循环
+```c
+这种方法其实相同的也能处理。两种循环
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+        unordered_map<int,int> data;
+        for(int i=0;i<nums.size();i++){
+            //data[i]=nums[i]; //注意这里是把数的值当作key
+            data[nums[i]]=i;
+       }
+        for(int i=0;i<nums.size();i++){
+            int cha=target-nums[i];
+            //if(data.find(cha)!=data.end() && data[cha]!=data[nums[i]]){ 错
+            //if(data.find(cha)!=data.end() && data[cha]!=i){ 对
+            if(data.count(cha) && data[cha]!=i)
+            {
+                ans.push_back(i);
+                ans.push_back(data[cha]);
+                return ans;
+            }
+            
+        }
+     return ans;
+
+    }
+};
+
+```
+###### 优化为一个循环
+```c
+一个循环的方法，这样就很简单了
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        vector<int> ans;
+        unordered_map<int ,int> data;
+        for(int i=0;i<nums.size();i++){
+            int cha=target-nums[i];
+            if(data.count(cha))
+            {
+                ans.push_back(i);
+                ans.push_back(data[cha]);
+                break;
+            }
+            data[nums[i]]=i;
+        }
+        return ans;
+    }
+};
+
+```
+##### 4 层次遍历二叉树 Leetcode 102
+https://leetcode.com/problems/binary-tree-level-order-traversal/
+
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int> > ans;
+        queue<TreeNode*> q;
+        if(root==NULL) return ans;
+        q.push(root);
+        while(!q.empty()){
+            int len=q.size();
+            vector<int> aa;
+            while(len--){
+                TreeNode * temp=q.front();
+                q.pop();
+                aa.push_back(temp->val);
+                if(temp->left) q.push(temp->left);
+                if(temp->right) q.push(temp->right); 
+            }
+           ans.push_back(aa);
+        }
+        return ans;
+    }
+};
+```
+
+##### 5 DFS括号匹配全排列 leetcode22
+字符串删除最后一个字符知识点。
+```c
+str = str.substr(0, str.length() - 1);
+str.erase(str.end() - 1);
+str.pop_back();
+```
+
+```c
+```
