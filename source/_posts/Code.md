@@ -415,7 +415,7 @@ public:
 };
 ```
 
-##### 3 Two Sum
+##### 3 Two Sum Leetcode1
 ###### 基本知识
 1 地址：https://leetcode.com/problems/two-sum/
 - list支持快速的插入和删除，查找费时
@@ -545,6 +545,152 @@ str = str.substr(0, str.length() - 1);
 str.erase(str.end() - 1);
 str.pop_back();
 ```
+这是我自己写的非常乱的一个代码
+```c
+class Solution {
+public:
+    vector<string> ans;
+    vector<string> generateParenthesis(int n) {
+        string temp;
+        dfs(0,n,temp,ans,0,0);
+        return ans;      
+    }
+    void dfs(int now,int n,string temp,vector<string>& ans,int num1,int num2){
+        if(now==2*n)
+        {
+            ans.push_back(temp);
+            return;
+        }
+        if(num1>num2 && num1<n)
+        {
+            temp.push_back('(');
+            dfs(now+1,n,temp,ans,num1+1,num2);
+            temp.pop_back();
+            temp.push_back(')');
+            dfs(now+1,n,temp,ans,num1,num2+1);
+            temp.pop_back();
+            return;
+        }
+        if(num1>num2 && num1==n)
+        {
+            temp.push_back(')');
+            dfs(now+1,n,temp,ans,num1,num2+1);
+            temp.pop_back();
+            return;
+        }
+        {
+            temp.push_back('(');
+            dfs(now+1,n,temp,ans,num1+1,num2);
+            temp.pop_back();
+            
+        }
+        
+    }
+};
+```
+代码精简之后,其实这种全排列，dfs函数（我这个名字起的似乎很不准确）（1）：最开始有一个控制循环停止的条件，我们这里在最前面加上判断，使得)比(多的情况直接被PASS掉了。（2）还有一个到了某种情况把temp结果push到最终结果的。（3）通过不断地迭代走到最后一步 （4）而DFS函数本身是对各种情况的控制。
+```c
+class Solution {
+public:
+    vector<string> ans;
+    vector<string> generateParenthesis(int n) {
+        string temp;
+        dfs(n,temp,ans,0,0);
+        return ans;      
+    }
+    void dfs(int n,string temp,vector<string>& ans,int num1,int num2){
+        //开始加个跳出的
+        if(num1<num2) //这个直接就防止了)比（多的情况 所以下面的num1==num2那个可以省去了
+            return; //return了就不会进入死循环了
+        if(num2==n)
+        {
+            ans.push_back(temp);
+            return;
+        }
+        /*
+        if(num1==num2)
+        {
+             dfs(n,temp+'(',ans,num1+1,num2);
+             return;
+        }*/
+        if(num1<n) 
+            dfs(n,temp+'(',ans,num1+1,num2); //注意加上if判断
+        dfs(n,temp+')',ans,num1,num2+1);    
+    }
+};
+```
+##### 6
+一开始，right或者left处的边界总是出错， 所以在 while 循环里面加了对于边界的判断才过了。
 
 ```c
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int left=0;
+        int right=nums.size()-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(nums[mid]==target) 
+                return mid;
+            if(nums[right]==target) 
+                return right;
+            if(nums[left]==target) 
+                return left;
+            if(nums[mid]>nums[left]){ //左边有序
+                if(target<nums[mid] && target>=nums[left])
+                {
+                    right=mid-1;
+                    //right=mid;
+                }else{
+                    left=mid+1;
+                }
+                    
+            }
+            else{ //右边有序
+                if(nums[mid]<target && nums[right]>=target)
+                {
+                    left=mid+1;
+                }else{
+                    right=mid-1;
+                }
+            }
+        }
+        return -1;
+        
+    }
+};
+```
+这样就没有边界问题了，可是为什么呢？？
+```c
+class Solution {
+public:
+    int search(vector<int>& nums, int target) {
+        int left=0;
+        int right=nums.size()-1;
+        while(left<=right){
+            int mid=left+(right-left)/2;
+            if(nums[mid]==target) 
+                return mid;     
+            if(nums[mid]<nums[right]){
+                 if(nums[mid]<target && nums[right]>=target)
+                {
+                    left=mid+1;
+                }else{
+                    right=mid-1;
+                }          
+            }
+            else{
+                if(target<nums[mid] && target>=nums[left])
+                {
+                    right=mid-1;
+                }else{
+                    left=mid+1;
+                }
+                
+            }
+        }
+        return -1;
+        
+    }
+};
 ```
