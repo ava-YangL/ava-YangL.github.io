@@ -842,3 +842,64 @@ public:
         return dp[s.length()];
     }
 ```
+##### 9 Leetcode 993 看是不是表兄弟节点，也就是层序遍历，万一是亲兄弟节点就错了
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isCousins(TreeNode* root, int x, int y) {
+        if(root==NULL) 
+            return false;
+        queue<TreeNode*> q;
+        q.push(root);
+        while(!q.empty()){
+            int mark1=0;
+            int mark2=0;     
+            int start=0;
+            int len=q.size();
+            //while(len--){
+            while(start++<len){
+                TreeNode * temp=q.front();
+                cout<<temp->val<<" ";
+                q.pop();
+                ////////////////////////////
+                //这里是我看别人的代码加的 然后就好了 别人可真厉害
+                
+                if(temp->left && temp->left->val==x && temp->right && temp->right->val==y)
+                    return false;
+                if(temp->left && temp->left->val==y && temp->right && temp->right->val==x)
+                    return false;
+                ///////////////////////////////
+                if(temp->val==x )
+                    mark1=1;
+                if(temp->val==y)
+                    mark2=1;
+                if(temp->left) 
+                {
+                    q.push(temp->left);
+                    
+                }
+                if(temp->right) 
+                {
+                    q.push(temp->right);
+                }
+
+                
+            }
+            cout<<endl;
+                if(mark1==1 && mark2==1)
+                    return true;
+        }
+        return false;
+        
+    }
+};
+```
