@@ -1075,3 +1075,60 @@ public:
     }
 };
 ```
+
+##### 12 求这个人所有的直接/简介粉丝数，比如（1，2）（2，3）（3，4）（2，4）（5，6）（1，5），1的粉丝数为5，2为2，3为1，4为0，5为1，6为0.
+```c
+# include <iostream>
+#include <vector>
+#include <algorithm> 
+# include <unordered_map>
+using namespace std;
+
+void dfs(int key,int num[7][7],vector<int> & mark,int &ans)
+{
+    mark[key]=1;
+    for(int i=1;i<7;i++)
+    {
+        if(num[key][i]==1 && mark[i]==0)
+        {
+            ans++;
+            dfs(i,num,mark,ans);
+        }
+    }   
+    
+}
+
+int main()
+{
+    vector<vector<int>> input;
+    input.push_back({1,2});
+    input.push_back({2,3});
+    input.push_back({3,4});
+    input.push_back({5,6});
+    input.push_back({2,4});
+    input.push_back({1,5});
+    //input.push_back({4,5});
+    unordered_map <int,int> m;
+    int num[7][7];
+    for(int i=1;i<7;i++)
+     for(int j=1;j<7;j++)
+        num[i][j]=0;
+    
+    for(int i=0;i<input.size();i++)
+    {   
+        int x=input[i][0];
+        int y=input[i][1];
+        num[x][y]=1;
+
+    }
+    // 正式开始 
+    for(int i=1;i<7;i++)
+    {
+        int ans=0;
+        vector<int> mark(7,0);
+        dfs(i,num,mark,ans);
+        cout<<ans<<endl;
+    }
+    return  0;
+ } 
+```
