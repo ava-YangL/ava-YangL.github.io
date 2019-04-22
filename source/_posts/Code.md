@@ -903,3 +903,175 @@ public:
     }
 };
 ```
+
+##### 10 Leetcode 547 直接朋友间接朋友的朋友圈个数
+my_batch_num22
+```c
+class Solution {
+public:
+    int findCircleNum(vector<vector<int>>& M) {
+        int count=0;
+        vector<bool > mark (M.size(),false);
+        for(int i=0;i<M.size();i++){
+            if(mark[i]==false)
+            {  //如果i 没被访问过，就是新的一个朋友圈了，就++，其实主要的功能还是还是把一个朋友圈内的置为true
+                dfs(M,mark,count,i);
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    void dfs(vector<vector<int>>& M,vector<bool> & mark,int & count,int k)
+    {
+        mark[k]=true;
+        for(int i=0;i<M.size();i++){
+            if(M[i][k]==1 && mark[i]==false)
+                dfs(M,mark,count,i);
+        }
+    }
+};
+```
+
+##### 11 Leetcode200 岛屿个数
+DFS,我自己写的
+```c
+class Solution {
+public:
+    void dfs(vector<vector<char>>& grid, vector<vector<bool> > &mark, int m, int n){
+        mark[m][n]=true;
+        if((m-1) >=0  && mark[m-1][n]==false && grid[m-1][n]=='1')
+            dfs(grid,mark,m-1,n);
+        if((m+1) <grid.size()&& mark[m+1][n]==false && grid[m+1][n]=='1')
+            dfs(grid,mark,m+1,n);
+        if((n-1) >=0 && mark[m][n-1]==false && grid[m][n-1]=='1')
+            dfs(grid,mark,m,n-1);
+        if((n+1) <grid[0].size() && mark[m][n+1]==false && grid[m][n+1]=='1')
+            dfs(grid,mark,m,n+1);
+    
+    }
+    int numIslands(vector<vector<char>>& grid) {
+        
+        if(grid.size()==0) return 0;
+        //vector<vector<bool> > mark(false,sizeof(grid));
+        vector<vector<bool> > mark (grid.size());
+        for(int i=0;i<grid.size();i++)
+            mark[i].resize(grid[0].size());
+        int count=0;
+        
+        for(int i=0;i<mark.size();i++)
+            for(int j=0;j<mark[0].size();j++)
+                mark[i][j]=false;
+        
+        int m=grid.size();
+        int n=grid[0].size();
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(mark[i][j]==false && grid[i][j]=='1')
+                {
+                    dfs(grid,mark,i,j);
+                    count++;
+                }
+                    
+            }
+        }
+        return count;
+    }
+    
+    
+    
+    
+};
+```
+DFS 别人的代码 dfs就是一条路走到黑，当某个节点的临接节点都访问过了，回退到上一个节点。
+```c
+class Solution {
+// 抹掉就好了，不用mark来记录了
+public:
+    void dfs(vector<vector<char>>& grid, int m, int n){
+
+        grid[m][n]='0';
+        if((m-1) >=0   && grid[m-1][n]=='1')
+            dfs(grid,m-1,n);
+        if((m+1) <grid.size() && grid[m+1][n]=='1')
+            dfs(grid,m+1,n);
+        if((n-1) >=0 &&  grid[m][n-1]=='1')
+            dfs(grid,m,n-1);
+        if((n+1) <grid[0].size() && grid[m][n+1]=='1')
+            dfs(grid,m,n+1);
+    
+    }
+    int numIslands(vector<vector<char>>& grid) {       
+        if(grid.size()==0) return 0;
+        int count=0; 
+        int m=grid.size();
+        int n=grid[0].size();
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                if(grid[i][j]=='1')
+                {
+                    dfs(grid,i,j);
+                    count++;
+                }
+                    
+            }
+        }
+        return count;
+    }     
+};
+```
+BFS
+节点入队，相邻节点再入队。其实BFS和DFS都是访问过的置为0 就行了。
+```c
+class Solution {
+
+public:
+    int numIslands(vector<vector<char>>& grid) {    
+        if(grid.size()==0) return 0;
+        int count=0;
+        for(int i=0;i<grid.size();i++)
+            for(int j=0;j<grid[0].size();j++)
+            if(grid[i][j]=='1'){
+                count++;
+                bfs(grid,i,j);
+            }
+        return count;
+
+    }
+    void bfs(vector<vector<char>>& grid,int m,int n)
+    {
+        grid[m][n]='0';
+        queue<vector<int>>  q;
+        q.push({m,n});
+        while(!q.empty()){
+            int x=q.front()[0];
+            int y=q.front()[1];
+            q.pop();
+            if( (x-1)>=0 && grid[x-1][y]=='1')
+            {
+                //bfs(grid,x-1,y);
+                q.push({x-1,y});
+                grid[x-1][y]='0';
+            }
+            if( (x+1)<grid.size() && grid[x+1][y]=='1')
+            {
+                //bfs(grid,x+1,y);
+                grid[x+1][y]='0';
+                q.push({x+1,y});
+            }
+            if( (y-1)>=0 && grid[x][y-1]=='1')
+            {
+                //bfs(grid,x,y-1);
+                grid[x][y-1]='0';
+                q.push({x,y-1});
+            }
+            if( (y+1)<grid[0].size() && grid[x][y+1]=='1')
+            {
+                //bfs(grid,x,y+1);
+                grid[x][y+1]='0';
+                q.push({x,y+1});
+            }
+        }
+    }
+};
+```
