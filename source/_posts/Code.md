@@ -414,6 +414,47 @@ public:
     }
 };
 ```
+###### 冒泡排序
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* sortList(ListNode* head) {
+        
+        ListNode *temp=head;
+        ListNode *tail=NULL;
+        
+        while(tail!=head)
+        {
+            ListNode *max=head;
+            while(temp->next!=tail){
+                if(max->val <temp->val)
+                    max=temp;
+                temp=temp->next;
+            }
+            tail=temp;    
+            if(max->val > temp->val)
+              swap(max->val,temp->val);       
+            temp=head;
+            //cout<<tail->val<<" "<<temp->val<<" "<<max->val<<endl;
+        }
+        //cout<<head->val<<endl;
+        //cout<<tail->val<<endl;
+        //cout<<temp->val<<endl;
+        return head;
+        
+    }
+};
+
+
+```
 
 ##### 3 Two Sum Leetcode1
 ###### 基本知识
