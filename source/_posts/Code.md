@@ -1219,3 +1219,363 @@ public:
 （2） DFS的方法
 ```c
 ```
+##### 两个栈实现队列
+```c
+class MyQueue {
+public:
+    stack<int> a;
+    stack<int> b;
+    /** Initialize your data structure here. */
+    MyQueue() {
+        
+    }
+    
+    /** Push element x to the back of queue. */
+    void push(int x) {
+        a.push(x);
+    }
+    
+    /** Removes the element from in front of queue and returns that element. */
+    int pop() {
+        while(!a.empty())
+        {
+            int temp=a.top();
+            a.pop();
+            b.push(temp);
+        }
+        int temp=b.top();
+        b.pop();
+        while(!b.empty())
+        {
+            int temp=b.top();
+            b.pop();
+            a.push(temp);
+        }
+        return temp;
+    }
+    
+    /** Get the front element. */
+    int peek() {
+        while(!a.empty())
+        {
+            int temp=a.top();
+            a.pop();
+            b.push(temp);
+        }
+        int peek=b.top();
+        while(!b.empty())
+        {
+            int temp=b.top();
+            b.pop();
+            a.push(temp);
+        }
+        return peek;
+        
+    }
+    
+    /** Returns whether the queue is empty. */
+    bool empty() {
+        return a.empty();
+    }
+};
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue* obj = new MyQueue();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->peek();
+ * bool param_4 = obj->empty();
+ */
+/*
+MyQueue queue = new MyQueue();
+
+queue.push(1);
+queue.push(2);  
+queue.peek();  // returns 1
+queue.pop();   // returns 1
+queue.empty(); // returns false
+*/
+```
+
+##### 两个队列实现栈
+```c
+class MyStack {
+public:
+    queue<int> a;
+    queue<int> b;
+    /** Initialize your data structure here. */
+    MyStack() {
+        
+    }
+    
+    /** Push element x onto stack. */
+    void push(int x) {
+        a.push(x);
+    }
+    
+    /** Removes the element on top of the stack and returns that element. */
+    int pop() {
+        while(a.size()!=1)
+        {
+            int temp=a.front();
+            a.pop();
+            b.push(temp);
+        }
+        int temp=a.front();
+        a.pop();
+        while(!b.empty())
+        {
+            int temp=b.front();
+            b.pop();
+            a.push(temp);
+        }
+        
+        return temp;
+        
+    }
+    
+    /** Get the top element. */
+    int top() {
+        while(a.size()!=1)
+        {
+            int temp=a.front();
+            a.pop();
+            b.push(temp);
+        }
+        int temp=a.front();
+        a.pop();
+        b.push(temp);
+        while(!b.empty())
+        {
+            int temp=b.front();
+            b.pop();
+            a.push(temp);
+        }
+        
+        return temp;
+        
+    }
+    
+    /** Returns whether the stack is empty. */
+    bool empty() {
+        return a.empty();
+    }
+};
+
+/**
+ * Your MyStack object will be instantiated and called as such:
+ * MyStack* obj = new MyStack();
+ * obj->push(x);
+ * int param_2 = obj->pop();
+ * int param_3 = obj->top();
+ * bool param_4 = obj->empty();
+ MyStack stack = new MyStack();
+
+stack.push(1);
+stack.push(2);  
+stack.top();   // returns 2
+stack.pop();   // returns 2
+stack.empty(); // returns false
+ */
+```
+##### 链表找环
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head) {
+        if(head==NULL || head->next==NULL)
+            return false;
+        if(head==head->next) return true;
+        ListNode* slow=head;
+        ListNode* fast=head->next;
+        while(slow!=fast && fast!=NULL && fast->next!=NULL)
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast)
+                return true;
+        }
+        //if(slow==fast)
+          //  return true;
+        //else
+            return false;
+        
+    }
+};
+```
+##### 找环的入口位置
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        if(head==NULL) return NULL;
+        
+        ListNode * slow=head;
+        ListNode * fast=head;
+        while(fast!=NULL && fast->next!=NULL  )
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast)
+            {
+                //cout<<"%%"<<endl;
+                slow=head;
+                while(slow!=fast)
+                {
+                    slow=slow->next;
+                    fast=fast->next;
+                }
+                return slow;
+            }
+        }
+        return NULL;
+        
+    }
+};
+```
+
+##### 二叉搜索树最小公共父亲
+```c
+
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        int minn=p->val;
+        int maxx=q->val;
+        
+        if(p->val > q->val)
+        {
+            swap(minn,maxx);
+        }
+        while(root->val<minn || root->val>maxx)
+        {
+            cout<<root->val<<" "<<minn<<" "<<maxx<<endl;
+            if(root->val==minn || root->val==maxx)
+               return root;
+            if(root->val>maxx)
+                if(root->left) root=root->left;
+            if(root->val<minn)
+                if(root->right) root=root->right;
+        }
+        return root;
+        
+    }
+};
+```
+##### 二叉搜索树 中序遍历，自己写错了好多哦
+```c
+/*
+struct TreeNode {
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+    TreeNode(int x) :
+            val(x), left(NULL), right(NULL) {
+    }
+};
+*/
+class Solution {
+public:
+    TreeNode* KthNode(TreeNode* pRoot, int k)
+    {
+         stack<TreeNode*> s;
+         int ans=0;
+         if(pRoot==NULL) return NULL;
+         //s.push(pRoot);
+         while(pRoot!=NULL || !s.empty()) //我这里写的proot-》left
+         {
+             while(pRoot!=NULL)
+             {
+                 s.push(pRoot);
+                 pRoot=pRoot->left;
+             }
+             if(!s.empty())
+             {
+                 pRoot=s.top(); //我写的temp。。。。。
+                 s.pop();
+                 ans++;
+                 if(ans==k)
+                     return pRoot;
+                 pRoot=pRoot->right;   
+             }
+         }
+        return NULL;
+    }
+
+    
+};
+```
+
+##### 之字形打印二叉树
+```c
+/*
+struct TreeNode {
+    int val;
+    struct TreeNode *left;
+    struct TreeNode *right;
+    TreeNode(int x) :
+            val(x), left(NULL), right(NULL) {
+    }
+};
+*/
+class Solution {
+public:
+    //奇数从左到右 偶数从右到左
+        vector<vector<int> > Print(TreeNode* pRoot) {
+            vector<vector<int> > ans;
+            queue<TreeNode*> q;
+            if(pRoot==NULL) return ans;
+            q.push(pRoot);
+            int index=0;
+            while(!q.empty())
+            {
+                int len=q.size();
+                index++;
+                vector<int> tempp;
+                for(int i=0;i<len;i++)
+                {
+                    TreeNode* temp=q.front();
+                    q.pop();
+                    tempp.push_back(temp->val);
+                       if(temp->left) q.push(temp->left);
+                       if(temp->right) q.push(temp->right);
+                }
+                if(index%2==0)
+                    reverse(tempp.begin(),tempp.end());
+                ans.push_back(tempp);
+            }
+     return ans;
+        }
+ 
+};
+```
+
+
+##### 哈希表去重复
