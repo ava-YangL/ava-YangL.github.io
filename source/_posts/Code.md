@@ -1173,3 +1173,49 @@ int main()
     return  0;
  } 
 ```
+
+##### Leetcode207 判断课程有没有环
+(1) 入度为0的入栈 判断ans的个数和input的个数一不一样
+```c
+class Solution {
+public:
+    bool canFinish(int numCourses, vector<pair<int, int>>& prerequisites) {
+        vector<int> degree(numCourses,0);//各个节点的入度
+        stack<int> temp;
+        //vector<int> res;
+        int res=0;
+        //计算入度
+        for(int i=0;i<prerequisites.size();i++)
+        {
+            degree[prerequisites[i].first]++;
+        }
+        //入度为0入栈
+        for(int i=0;i<numCourses;i++)
+        {
+            if(degree[i]==0)
+                temp.push(i);
+        }
+        //计算
+        while(!temp.empty())
+        {
+            int now=temp.top();
+            temp.pop();
+            res++;
+            //res.push_back(now);
+            for(int i=0;i<prerequisites.size();i++)
+            {
+                if(prerequisites[i].second==now)
+                {
+                    degree[prerequisites[i].first]--;
+                    if(degree[prerequisites[i].first]==0)
+                        temp.push(prerequisites[i].first);
+                }
+            }    
+       }
+      return numCourses==res;//.size();
+    }
+};
+```
+（2） DFS的方法
+```c
+```
