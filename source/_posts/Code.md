@@ -8,9 +8,61 @@ tags:
 - 牛顿法
 - 堆排序
 ---
- ##### 1 求平方根
- ##### 2 n个数找k大
+希望能每天刷一道题？？？
 <!--more-->
+
+#### 1 LeetCode 132. Palindrome Partitioning II （20190709）
+
+Given a string s, partition s such that every substring of the partition is a palindrome.
+Return the minimum cuts needed for a palindrome partitioning of s.
+```c
+class Solution {
+public:
+    int minCut(string s) {   
+        /*
+        思路：找一个一维数组mark从后往前
+        保存最小割数；找一个二维数组保存p[i][j]
+        是不是回文
+        就是：mark[i]=s(i:len)的割数
+        针对每个可能的割点j:
+        (1)p[i][j]是回文（就是找到了是的mark[i]更小的方法）
+        那么，mark[i]=1+mark[j+1](这里就是在j这里切了一刀)
+        (2)p[i][j]不是回文：那没有办法了，就等于原来mark[i]
+        */      
+        int len=s.size();
+        int mark[len+1];
+        bool p[len][len];
+        //最坏情况
+        for(int i=0;i<=len;i++)//多了一个
+        {
+            mark[i]=len-i-1;
+        }      
+        for(int i=0;i<len;i++)
+            for(int j=0;j<len;j++)
+                p[i][j]=false;
+        for(int i=len-1;i>=0;i--)//从最后一个开始
+        {
+            for(int j=i;j<len;j++)//针对每个可能的割点j
+            {
+                if(s[i]==s[j] && (j-i<2||p[i+1][j-1]))//如果割点j起作用了，也就是ij是回文
+                {
+                    p[i][j]=true;
+                    mark[i]=min(mark[i],mark[j+1]+1);//这里是因为可能之前的割点更好啊
+                }
+                    
+                   
+            }
+        }        
+        return mark[0];
+        
+    }
+};
+```
+
+
+-----------------------------------------------------------------------
+这里是7月和3月的分界线
+------------------------------------------------------------------------
 ### 1 求平方根
 #### 牛顿法
 
