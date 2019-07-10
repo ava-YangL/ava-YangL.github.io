@@ -59,7 +59,41 @@ public:
 };
 ```
 
-
+注意vector的初始化和定义方法
+```c
+vector<int> p(len+1,0);
+        for(int i=0;i<len+1;i++)
+            p[i]=len-i-1;
+        vector<bool> tmp(len,false);
+        vector<vector<bool>> b(len,tmp);
+```
+#### 2 Leetcode135 Candy
+There are N children standing in a line. Each child is assigned a rating value.
+You are giving candies to these children subjected to the following requirements:
+Each child must have at least one candy.
+Children with a higher rating get more candies than their neighbors.
+What is the minimum candies you must give?
+```c
+class Solution {
+public:
+    int candy(vector<int> &ratings) {
+        int len=ratings.size();
+        vector<int> res(len,1);
+        for(int i=1;i<len;i++)
+        {
+            if(ratings[i]>ratings[i-1])
+                res[i]=res[i-1]+1;  
+        }
+        for(int i=len-2;i>=0;i--)
+        {
+            if(ratings[i]>ratings[i+1] && res[i]<=res[i+1]) //注意多了一个情况
+                res[i]=res[i+1]+1;  
+        }
+        return accumulate(res.begin(),res.end(),0);
+        
+    }
+};
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
