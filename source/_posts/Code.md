@@ -67,12 +67,15 @@ vector<int> p(len+1,0);
         vector<bool> tmp(len,false);
         vector<vector<bool>> b(len,tmp);
 ```
-#### 2 Leetcode135 Candy
+#### 2 Leetcode135 Candy （20190710）
 There are N children standing in a line. Each child is assigned a rating value.
 You are giving candies to these children subjected to the following requirements:
 Each child must have at least one candy.
 Children with a higher rating get more candies than their neighbors.
 What is the minimum candies you must give?
+
+本题采用从左扫到右，再从右扫到左的策略（好像还有其他的解法，但我有点懒得看了。。。。）
+
 ```c
 class Solution {
 public:
@@ -1304,6 +1307,7 @@ public:
 ```
 （2） DFS的方法
 ```c
+
 ```
 ##### 两个栈实现队列
 ```c
