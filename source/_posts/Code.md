@@ -97,6 +97,31 @@ public:
     }
 };
 ```
+
+### 3 Single Number Leetcode136 (20190711)
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+Note:
+Your algorithm should have a linear runtime complexity. Could you implement it without using extra memory?
+这里做的是异或运算（转换为2进制，每一位相同的是0，不同的是1） 也就是10进制的异或，和0异或是他本身，两个相等的10进制数异或为0，这样就能把那个单独的数找出来啦。
+2 ^ 3= 0000 0010 ^ 0000 0011 = 0000 0001   1
+1 ^ 2= 0000 0001 ^ 0000 0010 = 0000 0011   3
+3 ^ 3= 0000 0011 ^ 0000 0011 =  0000 0000  0
+0 ^ 4= 0000 0000 ^ 0000 0100 = 0000 0100   4
+4 ^ 1= 0000 0100 ^ 0000 0001 = 0000 0101   5
+5 ^ 4= 0000 0101 ^ 0000 0100 =0000 0001    1
+```c
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        int num=0;
+        int n=nums.size();
+        for(int i=0;i<n;i++)
+            num^=nums[i];
+        return num;
+        
+    }
+};
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
