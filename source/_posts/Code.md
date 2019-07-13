@@ -125,7 +125,7 @@ public:
 #### 4 142. Linked List Cycle II  （20190713）
 判断有没有环，没有返回NULL，有就返回起点的位置~~
 
-```
+```c
 /**
  * Definition for singly-linked list.
  * struct ListNode {
