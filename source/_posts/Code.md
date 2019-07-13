@@ -122,6 +122,52 @@ public:
     }
 };
 ```
+#### 4 142. Linked List Cycle II  （20190713）
+判断有没有环，没有返回NULL，有就返回起点的位置~~
+
+```
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *detectCycle(ListNode *head) {
+        /*
+        快慢指针，这个题之前做过了，我有在偷懒
+        就是快慢指针先看看相不相遇，相遇就是有环，记相遇时：
+        慢指针走了a+x ,(x肯定在环里，即从入口到相遇点距离为x)
+        从相遇点再到入口，距离为y
+        则快指针走了a+x+a+x=a+x+l（快比慢多走了l）=a+x+(x+y)
+        所以，a=y,所以慢指针再走y，快指针再从0走到a就是相遇点啦。
+        */
+        if(head==NULL || head->next==NULL)
+            return NULL;
+        ListNode *fast=head;
+        ListNode *slow=head;
+        while( slow && fast && fast->next){
+            fast=fast->next->next;
+            slow=slow->next;
+            if(fast==slow)
+            {
+                fast=head;
+            while(fast!=slow)
+            {
+                fast=fast->next;
+                slow=slow->next;
+            }
+                return fast;
+            }
+        }
+        return NULL;
+    }
+};
+```
+
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
