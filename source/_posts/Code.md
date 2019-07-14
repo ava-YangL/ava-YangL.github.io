@@ -167,6 +167,70 @@ public:
     }
 };
 ```
+#### 5 Word break (20190714)
+Given a string s and a dictionary of words dict, determine if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+For example, given
+s ="leetcode",
+dict =["leet", "code"].
+
+Return true because"leetcode"can be segmented as"leet code".
+
+注意s.substr的参数是起始位置，字符个数。注意unordered_set是find不等于end
+动态规划的思想
+
+```c
+class Solution {
+public:
+    bool wordBreak(string s, unordered_set<string> &dict) {
+        
+        //针对每一个字符做一下判断？？
+        int len=s.length();
+        vector<bool> mark(len+1,false);//len+1是因为0是标志位啊
+        mark[0]=true; 
+        /*
+        mark[pos]=mark[i] && mark[i+1,pos]
+        就是0-pos可分词 是 0-i在字典里 并且i+1-pos在字典里 都是闭括号
+        */
+        for(int pos=1;pos<=len;pos++) //判断每个字符
+        { //以<=i做判断
+            for(int i=0;i<=(pos-1);i++)
+            {
+                //if(mark[pos] && dict.find(s[pos+1:i])!=dict.end())
+                if(mark[i] && dict.find(s.substr(i,pos-i))!=dict.end())
+                    mark[pos]=true;
+            }
+        }
+        return mark[len];
+    }
+};
+```
+然后同样的题在Leetcode 139,注意代码里判断vector里面存不存在某元素的方法鸭。
+```c
+class Solution {
+public:
+    bool wordBreak(string s, vector<string>& wordDict) {
+        int len=s.length();
+        vector<bool> mark(len+1,false);
+        mark[0]=true;
+        
+        for(int i=1;i<=len;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                //mark{i]=mark[0:j] && mark[j+1,i]
+                if(mark[j] && find(wordDict.begin(),wordDict.end(),s.substr(j,i-j))!=wordDict.end())
+                    mark[i]=true;
+            }
+        }
+        return mark[len];
+        
+    }
+};
+
+
+
+```
 
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
