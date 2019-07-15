@@ -231,6 +231,38 @@ public:
 
 
 ```
+#### 6  LEETCODE 121. Best Time to Buy and Sell Stock (20190715)
+
+
+Say you have an array for which the ith element is the price of a given stock on day i.
+If you were only permitted to complete at most one transaction (i.e., buy one and sell one share of the stock), design an algorithm to find the maximum profit.
+Note that you cannot sell a stock before you buy one.
+Example 1:
+
+Input: [7,1,5,3,6,4]
+Output: 5
+Explanation: Buy on day 2 (price = 1) and sell on day 5 (price = 6), profit = 6-1 = 5.
+             Not 7-1 = 6, as selling price needs to be larger than buying price.
+竟然不是一道动态规划题目，可以画图来做！！ 先找最低点 （然后找差值最大的）
+```c
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int minn=INT_MAX;
+        int maxx=0;
+        for(int i=0;i<prices.size();i++)
+        {
+            if(prices[i]<minn)
+                minn=prices[i];
+            if((prices[i]-minn) > maxx)
+                maxx=(prices[i]-minn);
+            //cout<<minn<<" "<<maxx<<" "<<endl;
+        }
+        return maxx;
+        
+    }
+};
+```
 
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
