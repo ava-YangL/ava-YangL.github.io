@@ -264,6 +264,66 @@ public:
 };
 ```
 
+
+#### 7 104. Maximum Depth of Binary Tree  （20190716）
+二叉树的深度 ，这是递归的方法，别人竟然只写了一行代码？？？？？
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        
+        if(root==NULL)
+            return 0;
+        // int a=1;
+        // int b=1;
+        // if(root->left) 
+        //     a= 1+maxDepth(root->left);
+        // if(root->right) 
+        //     b=1+maxDepth(root->right);
+        // return max(a,b);
+        return 1+max(maxDepth(root->left),maxDepth(root->right));
+        
+    }
+};
+```
+非递归的方法呢 就是层序遍历 我太强了！！！
+```C
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        int num=0;
+        //非递归的方法就是层序遍历？？？
+        queue<TreeNode* > q;
+        if(root==NULL) return 0;
+        q.push(root);
+        while(!q.empty())
+        {
+            num++;
+            int start=0;
+            int end=q.size();
+            while(start++<end)
+            {
+                TreeNode * front=q.front();
+                q.pop();
+                if(front->left) q.push(front->left);
+                if(front->right) q.push(front->right);
+            }
+        }
+        return num;
+        
+    }
+};
+````
+
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
