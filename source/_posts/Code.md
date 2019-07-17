@@ -351,7 +351,44 @@ public:
 };
 
 ```
+#### 9 198. House Robber  (20190717)
+You are a professional robber planning to rob houses along a street. Each house has a certain amount of money stashed, the only constraint stopping you from robbing each of them is that adjacent houses have security system connected and it will automatically contact the police if two adjacent houses were broken into on the same night.
 
+其实我思路是对的 但是写的不太对，其实是永远更新最大值，但我0 1 元素一开始都等于自己了 -.-
+```c
+class Solution {
+public:
+    int rob(vector<int>& nums) {
+        if(nums.size()==0)
+            return 0;
+        if(nums.size()==1)
+            return nums[0];
+        //我写的有些麻烦 其实可以多两个元素的
+        // vector<int> mark(nums.size(),0);
+        // for(int i=0;i<nums.size();i++)
+        // {
+        //     if(i==0)
+        //     {
+        //         mark[i]=nums[i];
+        //         continue;
+        //     }   
+        //     if(i==1)
+        //     {
+        //         mark[i]=max(nums[0],nums[1]);
+        //         continue;
+        //     }
+        //     mark[i]=max(mark[i-1],mark[i-2]+nums[i]);
+        // }
+        // return max(mark[nums.size()-1],mark[nums.size()-2]);
+        vector<int> mark(nums.size()+2,0);
+        for(int i=2;i<nums.size()+2;i++)
+        {
+            mark[i]=max(mark[i-1],mark[i-2]+nums[i-2]);
+        }
+        return max(mark[nums.size()],mark[nums.size()+1]);
+    }
+};
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
