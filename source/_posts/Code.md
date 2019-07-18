@@ -389,6 +389,38 @@ public:
     }
 };
 ```
+#### 10 437. Path Sum III (20190718)
+https://leetcode.com/problems/path-sum-iii/
+找有几条节点和为sum的路径在这个树里
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int pathSum(TreeNode* root, int sum) {
+        if(root==NULL)
+            return 0;
+        //返回以我为起点的 以我孩子为起点的，所以调用的是本来这个函数
+        return get(root,sum,0)+pathSum(root->left,sum)+pathSum(root->right,sum);
+    }
+    int get(TreeNode* root ,int sum ,int now)
+    {
+        
+        if(root==NULL)
+            return 0;
+        //这个是用来去遍历这一分支的，但都是以root为起点的哦
+        return ((sum-now)==root->val)+get(root->left,sum,now+root->val)+get(root->right,sum,root->val+now);
+    }
+};
+
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
