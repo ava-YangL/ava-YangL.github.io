@@ -421,6 +421,49 @@ public:
 };
 
 ```
+#### 11 621 task scheduler（20180721）
+就是输入任务列表，然后输入n，要求相同的任务之间必须隔有n个任务，要你输出总共执行了多少个任务呢。
+-.- 似乎有更好的做法？？？？或者更简洁的代码？？再看看呢。
+```c
+class Solution {
+public:
+    int leastInterval(vector<char>& tasks, int n) {
+        unordered_map <char,int> dict;
+        //放入字典
+        for(int i=0;i<tasks.size();i++)
+        {
+            if(dict.find(tasks[i])!=dict.end())
+                dict[tasks[i]]++;
+            else
+                dict[tasks[i]]=1;
+        }
+        //找出最大值
+        int maxnum=0;
+        auto iter=dict.begin();
+        while(iter!=dict.end())
+        {         
+            maxnum=max(maxnum,iter->second);
+            iter++;
+        }
+        //有没有多的最大值
+        int k=0;
+        auto iter2=dict.begin();
+        while(iter2!=dict.end())
+        {   
+            if(iter2->second==maxnum)
+                k++;
+            iter2++;
+        }
+        //插空 按照最大值来算
+        int ans=maxnum+(maxnum-1)*(n)+k-1;
+        //特殊处理 万一没有需要插孔的之类的呢
+        int x=tasks.size();
+        int res=max(ans,x);
+        return res;
+        
+    }
+};
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
