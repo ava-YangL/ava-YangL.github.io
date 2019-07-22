@@ -464,6 +464,46 @@ public:
     }
 };
 ```
+
+#### 12 543. Diameter of Binary Tree （饶了好久 5555555,20190722）
+求最长的路径，再看看呢
+
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int diameterOfBinaryTree(TreeNode* root) {
+        if(root==NULL)
+            return 0;
+        int a=0;
+        return getH(root,a);
+        
+    }
+    int getH(TreeNode* root, int &h) //h代表高度 妈呀我觉得这个题有点难lv
+    {
+        if(root==NULL)
+        {
+            //h=0;//之前总是忘了这一句 这个似乎也不重要？？
+            return h;
+        }
+        int lv=0;
+        int rv=0;
+
+        int left=getH(root->left,lv); //LV代表高度， left表示left的直径
+        int right=getH(root->right,rv);
+        h=max(lv,rv)+1; //更新自己高度 所以适合lv rv比 而不是left right比
+        return max(max(left,right),lv+rv);
+    }
+};
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
