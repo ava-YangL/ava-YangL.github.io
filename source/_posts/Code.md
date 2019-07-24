@@ -540,6 +540,91 @@ public:
     
 };
 ```
+#### 14 155. Min Stack  (2019/7/24)
+Design a stack that supports push, pop, top, and retrieving the minimum element in constant time.
+push(x) -- Push element x onto stack.
+pop() -- Removes the element on top of the stack.
+top() -- Get the top element.
+getMin() -- Retrieve the minimum element in the stack.
+这种方法太慢啦！！！
+```c
+class MinStack {
+public:
+    /** initialize your data structure here. */
+    vector<int> nums;
+    MinStack() {
+        
+    }
+    
+    void push(int x) {
+        nums.push_back(x);
+        
+    }
+    
+    void pop() {
+        nums.pop_back();
+    }
+    
+    int top() {
+        int num=nums[nums.size()-1];
+        return num;
+    }
+    
+    int getMin() {
+        if(nums.size()<=0)
+            return 0;
+        int min=INT_MAX;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(min>nums[i])
+                min=nums[i];
+         
+        }
+        return min;
+    }
+};
+
+```
+
+这种是用两个栈完成的，不要怕s2 top不出来东西，他是栈，top没有就返回空，然后那里<=getMin()， 改成<就不行了。
+之前的最小值存在S2里面，不用怕把最小值pop出去了。
+s1放原来的栈，s2用来放最小值。
+```c
+class MinStack {
+private:
+    stack<int> s1;
+    stack<int> s2;
+public:
+    /** initialize your data structure here. */
+    
+    MinStack() {
+        
+    }
+    
+    void push(int x) {
+       s1.push(x);
+       //if(x<getMin()||s2.empty()) s2.push(x);   
+        if(s2.empty()||x<=getMin()) s2.push(x); //0 1 0的情况下 如果不是<= pop0之后就不行了
+    }
+    
+    void pop() {
+        //if(s1.top()==s2.top()) s2.pop();
+        if(s1.top()==getMin()) s2.pop();
+        s1.pop();
+        // if(!s1.empty())
+        //     s2.push(s1.top());
+    }
+    
+    int top() {
+    return s1.top();
+    }
+    
+    int getMin() {
+        //if(s2.empty()) return INT_MAX;
+        return s2.top();
+    }
+};
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
