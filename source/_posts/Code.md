@@ -625,6 +625,55 @@ public:
     }
 };
 ```
+
+#### 15 234. Palindrome Linked List (2019/07/25)
+判断一个链表是不是回文的。
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isPalindrome(ListNode* head) {
+        if(head==NULL ||head->next==NULL) return true;
+        //find mid
+        ListNode * slow=head;
+        ListNode * fast=head;
+        while(fast!=NULL && fast->next!=NULL)
+        {
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        //mid=slow  反转后面的
+        ListNode *pre=slow;
+        ListNode*p=slow->next;
+        pre->next=NULL;//断开两段鸭,但不能断开早了，比如在上一行断开
+        ListNode * temp;//记录p的next
+        while(p)
+        {
+            temp=p->next;
+            p->next=pre;
+            pre=p;
+            p=temp;
+        }
+        //判断是不是相同的呢
+        while(pre && head &&pre!=head)
+        {
+            if(pre->val!=head->val)
+                return false;        
+            pre=pre->next;
+            head=head->next;
+        }
+        return true;
+    }
+};
+```
+
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
