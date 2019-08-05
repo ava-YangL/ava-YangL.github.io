@@ -69,6 +69,7 @@ https://www.cnblogs.com/peizhe123/p/5674730.html
 
 - 可参考https://blog.csdn.net/ligang_csdn/article/details/53838743
 - 我写的真的像狗屎一样乱.....
+<div style="width: 600px; margin: auto">![avater](5.png)</div>
 <div style="width: 600px; margin: auto">![avater](24.jpg)</div>
 
 ### 多分类的逻辑斯蒂回归（TODO）
