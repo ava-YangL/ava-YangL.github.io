@@ -40,6 +40,7 @@ tags:
 参见：
 - https://zhuanlan.zhihu.com/p/39059717 
 - https://zhuanlan.zhihu.com/p/25356063
+- https://www.matongxue.com/madocs/222.html（这个解释比较好）
 
 1 偏导（Partial Derivative）
 - 一元函数的导数就是函数的变化率, 那对于二元函数的偏导而言, 可以按着某一个变量不变(视为常量), 只对其中的另外一个变量求变化率
