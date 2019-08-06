@@ -673,7 +673,389 @@ public:
     }
 };
 ```
+### 16  Intersection of Two Linked Lists （7.27）
+Write a program to find the node at which the intersection of two singly linked lists begins.找个两个链表交汇点
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        if (headA==NULL || headB==NULL)
+            return NULL;
+        ListNode *p1=headA;
+        ListNode *p2=headB;
+        while(p1!=p2)
+        {
+            //卧槽好精妙，走到头换成另一个人，这样就把长度差过滤了
+            p1=(p1)?p1=p1->next:headB;
+            p2=(p2)?p2=p2->next:headA;
+        }
+        return p1;
 
+    }
+};
+```
+
+### 17 Maximum Product Subarray （7.28）
+Given an integer array nums, find the contiguous subarray within an array (containing at least one number) which has the largest product.
+找连续的乘积最大的，注意正负。
+```c
+public:
+    int maxProduct(vector<int>& nums) {
+        
+        // vector<int> pos(nums.size()+1,1);
+        // vector<int> neg(nums.size()+1,1);
+        //记录最大的 记录最小的
+        //最大的不是 我这个数 就是我这个数前面的最小的 或者最大的乘我这个数
+        //因为还有正负，那么有没有更好的方法呢
+        //然后人家就是交换了！ 厉害
+        int pmax=INT_MIN;
+        int maxv=1;
+        int minv=1;
+        
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]<0) swap(maxv,minv);
+            maxv=max(nums[i],maxv*nums[i]);
+            minv=min(nums[i],minv*nums[i]);
+            pmax=max(pmax,maxv);
+        }
+        // vector<int>::iterator maxv= max_element(pos.begin()+1,pos.end());
+        // return *maxv;
+        return pmax;
+    }
+};
+```
+
+### 18  Lowest Common Ancestor of a Binary Tree （7.29）
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        if(root==p || root==q)
+        {
+           return root;
+        }
+        if(root==p) return p;
+        if(root==q) return q;
+        if(root->left && isChild(root->left,p) && isChild(root->left,q)) return lowestCommonAncestor(root->left,p,q);
+        if(root->right && isChild(root->right,p) && isChild(root->right,q)) return lowestCommonAncestor(root->right,p,q);
+        return root;
+        
+    }
+    bool isChild(TreeNode* dad,TreeNode* q)
+    {
+        if(dad==NULL) return false;
+        if(dad->left==q || dad->right==q ||dad==q) //少了一句这个dad==q
+            return true;
+        return isChild(dad->right,q)||isChild(dad->left,q);           
+    }
+};
+```
+### 19   Majority Element（7.30）
+Given an array of size n, find the majority element. The majority element is the element that appears more than ⌊ n/2 ⌋ times.
+
+You may assume that the array is non-empty and the majority element always exist in the array.
+```c
+//4  +1 -1 Boyer-Moore Majority Vote Algorithm
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        
+        int major=nums[0];
+        int count=1;
+        for(int i=1;i<nums.size();i++)
+        {
+            if(count==0)
+            {
+                major=nums[i];
+                count=0;
+            }
+            if(nums[i]==major)
+                count++;
+            else
+                count--;
+        }
+        return major;
+    }
+};
+
+
+
+
+
+//3 排序后的中间的元素一定是啊
+// class Solution {
+// public:
+//     int majorityElement(vector<int>& nums) {
+        
+//        sort(nums.begin(),nums.end());
+//        return nums[nums.size()/2];
+//     }
+// };
+
+//2 more than n/2
+// class Solution {
+// public:
+//     int majorityElement(vector<int>& nums) {
+        
+//         unordered_map<int,int> myset;
+//         for(int i=0;i<nums.size();i++)
+//         {
+//             if(myset.find(nums[i])!=myset.end())
+//                 myset[nums[i]]++;
+//             else
+//                 myset[nums[i]]=1;
+            
+//             if(myset[nums[i]]>(nums.size()/2))
+//                 return nums[i];
+//         }
+        
+//         return 0;
+//     }
+// };
+
+
+//1 my
+
+// class Solution {
+// public:
+//     int majorityElement(vector<int>& nums) {
+        
+//         unordered_map<int,int> myset;
+//         for(int i=0;i<nums.size();i++)
+//         {
+//             if(myset.find(nums[i])!=myset.end())
+//                 myset[nums[i]]++;
+//             else
+//                 myset[nums[i]]=1;
+//         }
+        
+//         unordered_map<int,int>::iterator iter;  //啊啊啊注意这里怎么写啊 
+//         int maxnum=0;
+//         int result=0;
+//         for(iter=myset.begin();iter!=myset.end();iter++) //还有这里
+//         {
+//             if(maxnum<iter->second)
+//             {
+//                 result=iter->first;
+//                 maxnum=iter->second;
+//             }
+//         }
+//         return result;
+//     }
+```
+### 20   House Robber III（7.31）
+https://leetcode.com/problems/house-robber-iii/
+It will automatically contact the police if two directly-linked houses were broken into on the same night.
+屋子是二叉树的形式， 求能偷的最大的钱数。
+
+```c
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int rob(TreeNode* root) {
+        int l=0;
+        int r=0;
+        return tryrob(root,l,r);
+    }
+    
+    int tryrob(TreeNode* root,int &l ,int &r) 
+    {
+        //l代表左孩子叠加的值 
+        //r代表右孩子叠加的值
+        //l r 0 0 /0 3/0 0/0 1/
+        if(root==NULL)
+            return 0;
+        int ll=0,lr=0,rl=0,rr=0;
+        l=tryrob(root->left,ll,lr);
+        r=tryrob(root->right,rl,rr);
+        //cout<<root->val<<" "<<l<<" "<<r<<endl;
+        return max(root->val+ll+lr+rl+rr,l+r);
+    }
+};
+```
+
+### 20  Longest Increasing Subsequence（8.1）
+Given an unsorted array of integers, find the length of longest increasing subsequence.
+Input: [10,9,2,5,3,7,101,18]
+Output: 4 
+Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4. 
+
+```c
+public:
+    int lengthOfLIS(vector<int>& nums) {
+        vector <int> res;
+        for( int i=0;i<nums.size();i++)
+        {
+            auto it=lower_bound(res.begin(),res.end(),nums[i]);
+            //找到res数组里比nums[i]大的第一个数
+            if(it==res.end())
+                res.push_back(nums[i]);
+            else
+                *it=nums[i];
+           
+            //永远保证最小的当前序列
+            //nlogn 就是找插入位置的时候可以用二分查找
+        }
+         return res.size();
+    }
+};
+
+// //时间n2 空间n
+// class Solution {
+// public:
+//     int lengthOfLIS(vector<int>& nums) {
+//         if(nums.size()==0)
+//             return 0;
+//         vector<int> res(nums.size(),1);
+//         for(int i=1;i<nums.size();i++)
+//         {
+//             for(int j=0;j<i;j++)
+//             {
+//                 if(nums[i]>nums[j])
+//                     res[i]=max(res[i],res[j]+1);
+//             }
+//         }
+//         auto maxIndex=max_element(res.begin(),res.end());
+//         return *maxIndex;
+//     }
+// };
+```
+
+### 21   Next Permutation（8.3）
+
+找这个全排列的下一个全排列是什么
+1,2,3 → 1,3,2
+3,2,1 → 1,2,3
+1,1,5 → 1,5,1
+
+做法：从后往前 要是不升序了的位置；这个位置交换他后面第一个比他大的元素；交换后reverse一下后面这段
+这个题主要开始考察一个思想
+```
+lass Solution {
+public:
+    //这都是些啥语句
+    void nextPermutation(vector<int>& nums) {
+        auto i=is_sorted_until(nums.rbegin(),nums.rend());
+        if(i!=nums.rend()) //?????为啥要加这句
+            swap(*i,*upper_bound(nums.rbegin(),i,*i));
+        reverse(nums.rbegin(),i);
+        
+    }
+
+};
+
+
+
+
+
+//下面是我手写的方法
+
+// class Solution {
+// public:
+//     void nextPermutation(vector<int>& nums) {
+//         int index=-1;
+//         for(int i=nums.size()-1;i>=0;i--)
+//         {
+//             if((i-1)>=0 && nums[i-1]<nums[i])
+//             {
+//                 index=i-1;
+//                 break;
+//             }
+//         }
+//         //cout<<index<<endl;
+//         if(index==-1)
+//         {
+//             sort(nums.begin(),nums.end());
+//         }else
+//         {
+//             int index2=index;
+//             for(int i=index+1;i<nums.size();i++)
+//             {
+//                 if(nums[i]>nums[index])//找到最后一个比他大的数 因为会不断覆盖掉
+//                     index2=i;
+//             }
+//             //cout<<index<<" "<<index2;
+//             swap(nums[index],nums[index2]);
+//             reverse(nums.begin()+index+1,nums.end());
+//         }
+        
+        
+//     }
+// };
+```
+
+### 22   Longest Consecutive Sequence（8.5）
+
+Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+Your algorithm should run in O(n) complexity.
+Example:
+
+Input: [100, 4, 200, 1, 3, 2]
+Output: 4
+Explanation: The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+
+思路：
+- 用set来做
+- 针对每一个数，找他的上一个数或者下一个数
+- 找到就erase掉（这样就是线性时间复杂度了啊）
+- 更新这个数的res（我这个 consecutive elements的长度） ，和之前的res比较
+
+```c
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if(nums.size()==0) return 0;
+        unordered_set<int> record (nums.begin(),nums.end());
+        int res=1;
+        for(int i=0;i<nums.size();i++)
+        {
+            record.erase(nums[i]);
+            int pre=nums[i]-1;
+            int next=nums[i]+1;
+            while(record.find(pre)!=record.end())
+            {
+                record.erase(pre);
+                pre--;
+            }
+            while(record.find(next)!=record.end())
+            {
+                record.erase(next);
+                next++;
+            }
+            res=max(res,next-pre+1-2);
+        }
+        return res;
+    }
+};
+```
+
+### 23  
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
