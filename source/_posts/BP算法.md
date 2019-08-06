@@ -2,7 +2,6 @@
 title: BP算法
 date: 2019-03-19 14:20:24
 categories: 
-- 春招准备
 tags:
 - BP
 - 深度学习
