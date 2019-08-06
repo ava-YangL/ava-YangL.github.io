@@ -2,7 +2,6 @@
 title: Batch Normalization
 date: 2019-03-19 15:13:14
 categories: 
-- 春招准备
 tags:
 - BN
 - 深度学习
