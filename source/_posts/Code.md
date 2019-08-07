@@ -1055,7 +1055,44 @@ public:
 };
 ```
 
-### 23  
+### 23  Find All Numbers Disappeared in an Array(8.7)
+
+Given an array of integers where 1 ≤ a[i] ≤ n (n = size of array), some elements appear twice and others appear once.
+Find all the elements of [1, n] inclusive that do not appear in this array.
+Could you do it without extra space and in O(n) runtime? You may assume the returned list does not count as extra space.
+Example:
+Input:
+[4,3,2,7,8,2,3,1]
+Output:
+[5,6]
+思路：找到不在的数，前提是这个给的数组1<=a[i]<=N
+
+```c
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        
+        //因为限定了num的取值范围
+        //所以可以根据index来做
+        for(int i=0;i<nums.size();i++)
+        {
+            int index=abs(nums[i])-1; //这里要加个abs 因为可能被我变成负数
+            nums[index]=nums[index]>0?-nums[index]:nums[index];
+            
+        }
+        //出现过的都变成负数了
+        //剩下的正数就是没出现过的
+        vector<int> res;
+        for(int i=0;i<nums.size();i++)
+        {
+            if(nums[i]>0)
+                res.push_back(i+1);
+        }
+        
+        return res;
+    }
+};
+```
 -----------------------------------------------------------------------
 这里是7月和3月的分界线
 ------------------------------------------------------------------------
