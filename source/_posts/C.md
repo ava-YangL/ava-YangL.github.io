@@ -79,6 +79,31 @@ Shape() Rect() Shape() Circle() Rect->calc Circle->calc ~Shape()  ~Shape()
 - 栈区（stack）—   由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。  
 - 堆区（heap） —   一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收   。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表 ，呵呵。
 
+
+4 Object may be visible invisible
+Object =Attributes(Data)+ Services(Operations/functions)
+
+
+5 VS对齐代码关键字， Ctrl+K Ctrl+F
+6 关于头文件
+```c
+以下文件在"os_cpu.h"中。
+#ifndef __OS_CPU_H__
+#define __OS_CPU_H__ 
+/*
+
+中间有许多定义啦声明啦！；；
+
+*/
+#endif /*__OS_CPU_H__*/
+
+这样，在编译阶段（ifndef是在编译阶段起作用滴！）假设有两个文件同时include了这个文件（os_cpu.h），这两个文件如果一个先编译了，那么__OS_CPU_H__就被定义了。当编译到第二个文件的时候，那么在开始的判断（ifnef）就会自动跳出os_cpu.h这个文件的重复编译。这样就避免了重复编译文件。。
+--------------------- 
+版权声明：本文为CSDN博主「thimin」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/thimin/article/details/1539960
+```
+
+
 --------------------- 
 作者：WX_Chen 
 来源：CSDN 
