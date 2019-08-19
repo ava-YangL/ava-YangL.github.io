@@ -14,4 +14,4 @@ tags:
 
 <!--more-->
 
-<img src="4.jpg" width=1000/>
+<img src="1.jpg" width=1000/>
