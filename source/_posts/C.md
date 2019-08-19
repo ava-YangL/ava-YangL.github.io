@@ -79,13 +79,13 @@ Shape() Rect() Shape() Circle() Rect->calc Circle->calc ~Shape()  ~Shape()
 - 栈区（stack）—   由编译器自动分配释放，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。  
 - 堆区（heap） —   一般由程序员分配释放，若程序员不释放，程序结束时可能由OS回收   。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表 ，呵呵。
 
-
-4 Object may be visible invisible
+## 3 其他知识
+1 Object may be visible invisible
 Object =Attributes(Data)+ Services(Operations/functions)
 
 
-5 VS对齐代码关键字， Ctrl+K Ctrl+F
-6 关于头文件
+2 VS对齐代码关键字， Ctrl+K Ctrl+F
+3 关于头文件
 ```c
 以下文件在"os_cpu.h"中。
 #ifndef __OS_CPU_H__
@@ -102,7 +102,25 @@ Object =Attributes(Data)+ Services(Operations/functions)
 版权声明：本文为CSDN博主「thimin」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
 原文链接：https://blog.csdn.net/thimin/article/details/1539960
 ```
+## 4 string 相关
+怎么输入一个带空格的字符串
+(C/C++ strlen(str)和str.length()和str.size()都可以求字符串长度。 strlen(str)是用于求字符数组的长度，其参数是char*。)
+```c
+#include <iostream>
+#include <string>
+using namespace std;
+int main()
+{
+	string inp;
+	getline(cin,inp);
 
+	cout << inp << endl;
+	cout << inp.size() << endl;
+	cout << inp.length() << endl;
+	return 0;
+
+}
+```
 
 --------------------- 
 作者：WX_Chen 
