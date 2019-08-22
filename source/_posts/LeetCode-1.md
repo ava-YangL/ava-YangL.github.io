@@ -386,8 +386,71 @@ public:
 };
 ```
 
+#### 7 647. Palindromic Substrings
 
 Description：
+Given a string, your task is to count how many palindromic substrings in this string.
+The substrings with different start indexes or end indexes are counted as different substrings even they consist of same characters.
+
 E.g.:
+```c
+Input: "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+```
+
 分析：
+(1) 长度为n的字符串，中心位置可能是2×（n-1）个
+(2) 针对每个中心位置来判断,从中心位置向四周扩散来做
+(3) Time Complexity: O(N^2) where N is the length of S. Each expansion might do O(N) work.
+Space Complexity: O(1).
+
 Code
+```c
+class Solution {
+public:
+    int countSubstrings(string s) {
+        
+        int len=s.size();
+        int sizes=2*len-1;
+        int ans=0;
+        cout<<len<<endl;
+        
+        for(int i=0;i<sizes;i++) //对每一个可能是中心的index判断
+        {
+            //0 1 2 3 4 5 6
+            //0   1   2   3 
+            int left=i/2;          //  0 0 1 1 2 2 3 3  （找到书的位置）
+            int right=left+(i%2);  //  0 1 0 1 0 1 0 1  (空隙的位置+1) 
+            while(left>=0 && right<(len) && s[left]==s[right])
+            {
+                ans++;
+                left--;
+                right++;
+               
+            }
+        }
+        
+        return ans;
+    }
+};
+```
+
+
+(2) Manacher 算法
+
+```c
+char:    # a # b # a #
+ RL :    1 2 1 4 1 2 1
+RL-1:    0 1 0 3 0 1 0
+  i :    0 1 2 3 4 5 6
+
+char:    # a # b # b # a #
+ RL :    1 2 1 2 5 2 1 2 1
+RL-1:    0 1 0 1 4 1 0 1 0
+  i :    0 1 2 3 4 5 6 7 8
+```
+Time Complexity: O(N)O(N) where NN is the length of S. As discussed above, the complexity is linear.
+
+Space Complexity: O(N)O(N), the size of A and Z.
+再说吧，，，累了
