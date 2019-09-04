@@ -48,6 +48,14 @@ Index
         - [模型参数的规模与运算量](#模型参数的规模与运算量)
         - [相比 N-gram 模型，NPLM 的优势](#相比-n-gram-模型nplm-的优势)
         - [NPLM 中的 OOV 问题](#nplm-中的-oov-问题)
+- [句嵌入](#句嵌入)
+    - [基线模型](#基线模型)
+    - [词袋模型](#词袋模型)
+    - [无监督模型](#无监督模型)
+    - [有监督模型](#有监督模型)
+    - [多任务学习](#多任务学习)
+
+
 
 <!-- /TOC -->
 
@@ -406,28 +414,26 @@ Index
 ### 困惑度 (Perplexity, PPX)
 > [Perplexity](https://en.wikipedia.org/wiki/Perplexity) - Wikipedia
 - 在信息论中，perplexity 用于度量一个**概率分布**或**概率模型**预测样本的好坏程度
-    > ../机器学习/[信息论](../A-机器学习/A-机器学习基础#信息论) 
 
 <h3>基本公式</h3>
 
 - **概率分布**（离散）的困惑度
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;{\displaystyle&space;2^{H(p)}=2^{-\sum&space;_{x}p(x)\log&space;_{2}p(x)}}"><img src="../_assets/公式_20180728195601.png" /></a></div>
+     <div style="width: 600px; margin: auto">![avater](eq1.PNG)</div>
     
-    > 其中 `H(p)` 即**信息熵**
+    > 其中 `H(p)` 即**信息熵** (注意熵越大，不确定性越大，**2的熵次方**)
 
 - **概率模型**的困惑度
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;{\displaystyle&space;b^{-{\frac&space;{1}{N}}\sum&space;_{i=1}^{N}\log&space;_{b}q(x_{i})}}"><img src="../_assets/公式_20180728201614.png" /></a></div>
-
+    <div style="width: 600px; margin: auto">![avater](eq2.PNG)</div>
     > 通常 `b=2`
   
 - **指数部分**也可以是**交叉熵**的形式，此时困惑度相当于交叉熵的指数形式
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;2^{H(\tilde{p},q)}&space;=&space;2^{-\sum_x\tilde{p}(x)\log_{2}q(x)}"><img src="../_assets/公式_20180728202629.png" /></a></div>
+   <div style="width: 600px; margin: auto">![avater](eq3.PNG)</div>
 
     > 其中 `p~` 为**测试集**中的经验分布——`p~(x) = n/N`，其中 `n` 为 x 的出现次数，N 为测试集的大小
 
 **语言模型中的 PPX**
 - 在 **NLP** 中，困惑度常作为**语言模型**的评价指标
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=\dpi{150}&space;\begin{aligned}&space;\mathrm{PPX}(W_{test})&space;&=2^{-\sum_{i=1}^{|V|}\tilde{p}(w_i)\log_{2}q(w_i)}\\&space;&=2^{-\sum_{i=1}^{|V|}\frac{\mathrm{cnt}(w_i)}{N}\log_{2}q(w_i)}&space;\end{aligned}"><img src="../_assets/公式_20180728205525.png" /></a></div>
+   <div style="width: 600px; margin: auto">![avater](eq4.PNG)</div>
 
 - 直观来说，就是下一个**候选词数目**的期望值——
 
@@ -435,21 +441,8 @@ Index
 
 ### BLEU
 > [一种机器翻译的评价准则——BLEU](https://blog.csdn.net/qq_21190081/article/details/53115580) - CSDN博客 
-- 机器翻译评价准则
-- 计算公式
-    <div align="center"><img src="../_assets/TIM截图20180728212554.png" height="" /></div>
-
-  其中
-    <div style="position:relative;left:25%"><img src="../_assets/TIM截图20180728215749.png" height="" /></div>
-    <div style="position:relative;left:25%"><img src="../_assets/TIM截图20180728212444.png" height="" /></div>
-    <!-- <div style="position:relative;left:25%"><img src="../_assets/TIM截图20180728212444.png" height="" /></div> -->
-
-    > `c` 为生成句子的长度；`r` 为参考句子的长度——目的是**惩罚**长度过短的候选句子
-
-- 为了计算方便，会加一层 `log` 
-    <div align="center"><img src="../_assets/TIM截图20180728213300.png" height="" /></div>
-    
-    > 通常 `N=4, w_n=1/4`
+> https://zhuanlan.zhihu.com/p/39100621
+<div style="width: 900px; margin: auto">![avater](eq5.PNG)</div>
 
 ### ROUGE
 > [自动文摘评测方法：Rouge-1、Rouge-2、Rouge-L、Rouge-S](https://blog.csdn.net/qq_25222361/article/details/78694617) - CSDN博客 
@@ -460,15 +453,6 @@ Index
 
 # 语言模型
 
-## XX 模型的含义
-- 如果能使用某个方法对 XX **打分**（Score），那么就可以把这个方法称为 “**XX 模型**”
-    - **篮球明星模型**: `Score(库里)`、`Score(詹姆斯)`
-    - **话题模型**——对一段话是否在谈论某一话题的打分
-        ```
-        Score( NLP | "什么 是 语言 模型？" ) --> 0.8
-        Score( ACM | "什么 是 语言 模型？" ) --> 0.05
-        ```
-
 ## 概率/统计语言模型 (PLM, SLM)
 - **语言模型**是一种对语言打分的方法；而**概率语言模型**把语言的“得分”通过**概率**来体现
 - 具体来说，概率语言模型计算的是**一个序列**作为一句话可能的概率
@@ -477,10 +461,10 @@ Index
     Score("什么 有 语言 模型") --> 0.01   # 不太常见的说法，得分比较低
     ```
 - 以上过程可以形式化为：
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=p(W)=p(w_1^T)=p(w_1,w_2,...,w_T"><img src="../_assets/公式_20180805204149.png" height="" /></a></div>
+    <div style="width: 600px; margin: auto">![avater](eq6.PNG)</div>
 
-  根据贝叶斯公式，有
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=p(w_1^T)=p(w_1)\cdot&space;p(w_2|w_1)\cdot&space;p(w_3|w_1^2)\cdots&space;p(w_T|w_1^{T-1})"><img src="../_assets/公式_20180805211530.png" height="" /></a></div>
+  根据**贝叶斯公式**，有
+    <div style="width: 600px; margin: auto">![avater](eq7.PNG)</div>
 
 - 其中每个条件概率就是**模型的参数**；如果这个参数都是已知的，那么就能得到整个序列的概率了
 
@@ -494,18 +478,18 @@ Index
 
 
 ## N-gram 语言模型
-- 马尔可夫(Markov)假设——未来的事件，只取决于有限的历史
+- **马尔可夫(Markov)假设**——未来的事件，只取决于有限的历史
 - 基于马尔可夫假设，N-gram 语言模型认为一个词出现的概率只与它前面的 n-1 个词相关
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=p(w_k|w_1,..,w_{k-1})\approx&space;p(w_k|w_{k-n&plus;1},..,w_{k-1})"><img src="../_assets/公式_20180805211644.png" height="" /></a></div>
+    <div style="width: 600px; margin: auto">![avater](eq8.PNG)</div>
   
 - 根据**条件概率公式**与**大数定律**，当语料的规模足够大时，有
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=p(w_k|w_{k-n&plus;1}^{k-1})=\frac{p(w_{k-n&plus;1}^k)}{p(w_{k-n&plus;1}^{k-1})}\approx&space;\frac{\mathrm{count}(w_{k-n&plus;1}^k)}{\mathrm{count}(w_{k-n&plus;1}^{k-1})}"><img src="../_assets/公式_20180805211936.png" height="" /></a></div>
+    <div style="width: 600px; margin: auto">![avater](eq9.PNG)</div>
 
 - 以 `n=2` 即 bi-gram 为例，有
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=p(w_k|w_{k-1})=\frac{p(w_{k-1},w_k)}{p(w_{k-1})}\approx&space;\frac{\mathrm{count}(w_{k-1},w_k)}{\mathrm{count}(w_{k-1})}"><img src="../_assets/公式_20180805212222.png" height="" /></a></div>
+    <div style="width: 600px; margin: auto">![avater](eq10.PNG)</div>
 
-- 假设词表的规模 `N=200000`（汉语的词汇量），模型参数与 `n· 的关系表
-    <div align="center"><img src="../_assets/TIM截图20180805212441.png" height="" /></div>
+- 假设词表的规模 `N=200000`（汉语的词汇量），模型参数与 n 的关系表  **注意这个的算法**
+    <div style="width: 600px; margin: auto">![avater](eq11.PNG)</div>
 
 ### 可靠性与可区别性
 - 假设没有计算和存储限制，`n` 是不是越大越好？
@@ -538,7 +522,7 @@ Index
 ## 神经概率语言模型 (NPLM)
 > [专题-词向量](./B-专题-词向量)
 - 神经概率语言模型依然是一个概率语言模型，它通过**神经网络**来计算概率语言模型中每个参数
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=p(w|{\color{Red}\text{context}(w)})=g(i_w,{\color{Red}V_{context}})"><img src="../_assets/公式_20180806100950.png" height="" /></a></div>
+<div style="width: 600px; margin: auto">![avater](eq12.PNG)</div>
   
     - 其中 `g` 表示神经网络，`i_w` 为 `w` 在词表中的序号，`context(w)` 为 `w` 的上下文，`V_context` 为上下文构成的特征向量。
     - `V_context` 由上下文的**词向量**进一步组合而成
@@ -546,12 +530,13 @@ Index
 ### N-gram 神经语言模型
 > [A Neural Probabilistic Language Model](http://www.jmlr.org/papers/volume3/bengio03a/bengio03a.pdf) (Bengio, et al., 2003)
 - 这是一个经典的神经概率语言模型，它沿用了 N-gram 模型中的思路，将 `w` 的前 `n-1` 个词作为 `w` 的上下文 `context(w)`，而 `V_context` 由这 `n-1` 个词的词向量拼接而成，即
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=p(w_k|{\color{Red}w_{k-n&plus;1}^{k-1}})=g(i_{w_k},{\color{Red}[c(w_{k-n&plus;1});...;c(w_{k-1})]})"><img src="../_assets/公式_20180806102047.png" height="" /></a></div>
+
+<div style="width: 600px; margin: auto">![avater](eq13.PNG)</div>
 
     - 其中 `c(w)` 表示 `w` 的词向量
     - 不同的神经语言模型中 `context(w)` 可能不同，比如 Word2Vec 中的 CBOW 模型
 - 每个训练样本是形如 `(context(w), w)` 的二元对，其中 `context(w)` 取 w 的前 `n-1` 个词；当不足 `n-1`，用特殊符号填充
-    - 同一个网络只能训练特定的 `n`，不同的 `n` 需要训练不同的神经网络
+    - **同一个网络只能训练特定的 `n`，不同的 `n` 需要训练不同的神经网络**
 
 #### N-gram 神经语言模型的网络结构
 - 【**输入层**】首先，将 `context(w)` 中的每个词映射为一个长为 `m` 的词向量，**词向量在训练开始时是随机的**，并**参与训练**；
@@ -562,12 +547,7 @@ Index
 - 训练时，使用**交叉熵**作为损失函数
 - **当训练完成时**，就得到了 N-gram 神经语言模型，以及副产品**词向量**
 - 整个模型可以概括为如下公式：
-    <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=y=U\cdot\tanh(Wx&plus;p)&plus;q"><img src="../_assets/公式_2018080695721.png" height="" /></a></div><br/>
-    <div align="center"><img src="../_assets/TIM截图20180805234123.png" height="200" /></div>
-  
-    > 原文的模型还考虑了投影层与输出层有有边相连的情形，因而会多一个权重矩阵，但本质上是一致的：
-    >> <div align="center"><a href="http://www.codecogs.com/eqnedit.php?latex=y=U\cdot\tanh(W_1x&plus;p)&plus;W_2x&plus;q"><img src="../_assets/公式_2018080695819.png" height="" /></a></div><br/>
-    >> <div align="center"><img src="../_assets/TIM截图20180805231056.png" height="" /></div>
+   <div style="width: 600px; margin: auto">![avater](eq14.PNG)</div>
 
 ### 模型参数的规模与运算量
 - 模型的超参数：`m, n, h, N`
@@ -593,7 +573,7 @@ Index
     > 相比神经语言模型本身，作为其副产品的词向量反而是更大的惊喜
     >
     > [词向量的理解](./B-专题-词向量#词向量的理解)
-- 自带平滑处理
+- 自带**平滑**处理
 
 ### NPLM 中的 OOV 问题
 - 在处理语料阶段，与 N-gram 中的处理方式是一样的——将不满阈值的词全部替换为 UNK
@@ -610,3 +590,157 @@ Index
 - 基于 Char-Level 的方法
     > PaperWeekly 第七期 -- [基于Char-level的NMT OOV解决方案](https://zhuanlan.zhihu.com/p/22700538?refer=paperweekly) 
 
+
+
+
+# 句嵌入
+===
+参考：https://github.com/ava-YangL/Algorithm_Interview_Notes-Chinese/blob/master/B-%E8%87%AA%E7%84%B6%E8%AF%AD%E8%A8%80%E5%A4%84%E7%90%86/B-%E4%B8%93%E9%A2%98-%E5%8F%A5%E5%B5%8C%E5%85%A5.md
+Index
+---
+<!-- TOC -->
+
+- [基线模型](#基线模型)
+    - [基于统计的词袋模型（BoW）](#基于统计的词袋模型bow)
+    - [基于词向量的词袋模型](#基于词向量的词袋模型)
+        - [均值模型](#均值模型)
+        - [加权模型](#加权模型)
+    - [基于 RNN（任务相关）](#基于-rnn任务相关)
+    - [基于 CNN（任务相关）](#基于-cnn任务相关)
+- [词袋模型](#词袋模型)
+    - [[2018] Power Mean 均值模型](#2018-power-mean-均值模型)
+    - [[2017] SIF 加权模型](#2017-sif-加权模型)
+    - [[]](#)
+- [无监督模型](#无监督模型)
+    - [[2015] Skip-Thought Vector](#2015-skip-thought-vector)
+    - [[2018] Quick-Thought Vectors](#2018-quick-thought-vectors)
+- [有监督模型](#有监督模型)
+    - [[2017] InferSent](#2017-infersent)
+    - [[2017] Self-Attention](#2017-self-attention)
+    - [[2015] DAN & RecNN](#2015-dan--recnn)
+- [多任务学习](#多任务学习)
+    - [[2018] 基于多任务的 Sentence Embedding（微软）](#2018-基于多任务的-sentence-embedding微软)
+    - [[2018] Universal Sentence Encoder（谷歌）](#2018-universal-sentence-encoder谷歌)
+- [参考文献](#参考文献)
+
+<!-- /TOC -->
+
+
+## 基线模型
+
+### 基于统计的词袋模型（BoW）
+- 单个词的 One-Hot 表示
+- 基于频数的词袋模型
+- 基于 TF-IDF 的词袋模型  : TF-IDF（term frequency–inverse document frequency），可见 https://zhuanlan.zhihu.com/p/31197209  
+- ... 
+
+> 词袋模型（英語：Bag-of-words model）是個在自然語言處理和信息檢索(IR)下被簡化的表達模型。 此模型下，一段文本（比如一个句子或是一个文档）可以用一個装着这些词的袋子来表示，這種表示方式不考慮文法以及詞的順序。 最近词袋模型也被應用在電腦視覺領域。
+
+### 基于词向量的词袋模型
+#### 均值模型
+  <div style="width: 600px; margin: auto">![avater](eq15.PNG)</div>
+> 其中 `v_i` 表示维度为 `d` 的词向量，均值指的是对所有词向量**按位求和**后计算每一维的均值，最后 `s` 的维度与 `v` 相同。
+
+#### 加权模型
+<div style="width: 600px; margin: auto">![avater](eq16.PNG)</div>
+> 其中 `α` 可以有不同的选择，但一般应该遵循这样一个准则：**越常见的词权重越小**
+>> [[2017] SIF 加权模型](#2017-sif-加权模型)
+
+### 基于 RNN（任务相关）
+- 以最后一个隐状态作为整个句子的 Embedding
+- 基于 RNN 的 Sentence Embedding 往往用于特定的有监督任务中，**缺乏可迁移性**，在新的任务中需要重新训练；
+- 此外，由于 RNN 难以并行训练的缺陷，导致开销较大。 (难以并行化是因为RNN的顺序关系？？卷积神经网路比较容易并行化？)
+
+
+### 基于 CNN（任务相关）
+- 卷积的优势在于提取**局部特征**，利用 CNN 可以提取句子中类似 n-gram 的局部信息；
+- 通过整合不同大小的 n-gram 特征作为整个句子的表示。
+
+   <div style="width: 800px; margin: auto">![avater](eq17.PNG)</div>
+
+## 词袋模型
+
+### [2018] Power Mean 均值模型
+> [4]
+- 幂均值
+<div style="width: 800px; margin: auto">![avater](eq18.PNG)</div>
+
+
+### [2017] SIF 加权模型
+- 频率高的词权重小
+- 主成分 （独立性？）
+<div style="width: 800px; margin: auto">![avater](eq19.PNG)</div>
+
+
+
+## 无监督模型
+这个没认真看
+<div style="width: 800px; margin: auto">![avater](eq20.PNG)</div>
+
+
+## 有监督模型
+
+### [2017] InferSent
+> [5]
+本文使用有监督的方法，在自然语言推理（NLI）数据集上训练 Sentence Embedding；
+本文认为从 NLI 数据集（比如 SNLI）中训练得到的句向量也适合迁移到其他 NLP 任务中。
+就像在各种 CV 任务中使用基于 ImageNet 的模型（VGG, ResNet 等）来得到图像特征一样，在处理 NLP 任务之前可以先使用本文公开的模型来计算句子的特征。
+
+### [2017] Self-Attention
+> [3]
+本文提出使用二维矩阵作为句子表征，矩阵的行表示在句子不同位置的关注度，以解决句子被压缩成一维向量时的信息损失。
+
+### [2015] DAN & RecNN
+> [9]
+
+## 多任务学习
+- InferSent 模型的成功，使大家开始探索不同的有监督任务中得到的 Sentence Embedding 在下游任务中的效果。
+- 多任务学习试图在一次训练中组合不同的训练目标。
+
+### [2018] 基于多任务的 Sentence Embedding（微软）
+> [6]
+
+- 本文认为为了能够推广到各种不同的任务，需要对同一句话的多个方面进行编码。
+- 简单来说，模型同时在**多个任务**和**多个数据源**上进行训练，但是**共享**相同的 Sentence Embedding。
+- 任务及数据集包括：
+    - Skip-Thought（预测上一句/下一句）——BookCorpus
+    - 神经机器翻译（NMT）——En-Fr (WMT14) + En-De (WMT15)
+    - 自然语言推理（NLI）——SNLI + MultiNLI
+    - Constituency Parsing——PTB + 1-billion word
+
+- 本文模型与 [Skip-Thought Vector](#2015-skip-thought-vector) 基本一致
+    - **主要区别**在于本文的 Encoder 部分使用的是 **Bi-GRU**，而 Decoder 部分完全一致；
+    - 使用 GRU 而非 LSTM 的原因主要是为了速度；
+
+### [2018] Universal Sentence Encoder（谷歌）
+> [7]
+
+- 本文的目的是动态地适应各种的 NLP 任务，通过在不同的数据集和不同的任务上同时训练。
+- 本文使用**类似的多任务框架**，区别在于使用的 Encoder 不同。
+    > [[2018] 基于多任务的 Sentence Embedding（微软）](#2018-基于多任务的-sentence-embedding微软)
+- 本文以两种模型作为 Encoder
+    - **Transformer** [8]——更高的精度
+    - **DAN** (Deep Averaging Network) [9]——更快的速度
+  
+- 一个可用的预训练版本
+    ```python
+    embed = hub.Module("https://tfhub.dev/google/universal-sentence-encoder/2")
+    embeddings = embed([
+        "The quick brown fox jumps over the lazy dog.",
+        "I am a sentence for which I would like to get its embedding"])
+
+    sess.run(embeddings)
+    ```
+    > TensorFlow Hub  |  [universal-sentence-encoder](https://www.tensorflow.org/hub/modules/google/universal-sentence-encoder/2) 
+
+
+## 参考文献
+- [1] A Simple but Tough-to-Beat Baseline for Sentence Embeddings, ICLR 2016.
+- [2] Skip-Thought Vectors, NIPS 2015.
+- [3] A Structured Self-attentive Sentence Embedding, ICLR 2017.
+- [4] An efficient framework for learning sentence representations, ICLR 2018.
+- [5] Supervised Learning of Universal Sentence Representations from Natural Language Inference Data, ACL 2017.
+- [6] Learning General Purpose Distributed Sentence Representations via Large Scale Multi-task Learning, ICLR 2018.
+- [7] Universal Sentence Encoder, arXiv 2018.
+- [8] Attention is all you need, NIPS 2017.
+- [9] Deep unordered composition rivals syntactic methods for text classification, 2015 ACL.
