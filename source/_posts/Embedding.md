@@ -76,10 +76,49 @@ tags:
 
 
 ##### 共现矩阵
-
+<div style="width: 800px; margin: auto">![avater](7.PNG)</div>
 
 ##### 基本思想
+- 词向量已知，如果这些词向量通过目标函数可以拟合共现（共同出现）矩阵中的统计信息，认为词向量也拥有了共现矩阵蕴含的语义。
+- 模型的训练过程就是拟合词向量的过程
 
 ##### 目标函数
+<div style="width: 800px; margin: auto">![avater](8.PNG)</div>
+
+##### 推导过程
+<div style="width: 800px; margin: auto">![avater](9.PNG)</div>
+
+
+<div style="width: 800px; margin: auto">![avater](10.PNG)</div>
+
+
+<div style="width: 800px; margin: auto">![avater](11.PNG)</div>
+
 
 ##### 与Word2vec的区别
+
+- Word2Vec 本质上是一个神经网络；
+- Glove 也利用了反向传播来更新词向量，但是结构要更简单，所以 GloVe 的速度更快
+- Glove 认为 Word2Vec 对高频词的处理还不够，导致速度慢；GloVe 认为共现矩阵可以解决这个问题
+    > 实际 Word2Vec 已结有了一些对高频词的措施 > 高频词的处理
+
+- 从效果上看，虽然 GloVe 的训练速度更快，但是词向量的性能在通用性上要弱一些：
+- 在一些任务上表现优于 Word2Vec，但是在更多的任务上要比 Word2Vec 差
+
+
+
+#### 4 FastText
+
+<div style="width: 800px; margin: auto">![avater](12.PNG)</div>
+
+
+工具:gensim.models.FastText
+
+
+
+
+#### 5 一般 embedding 维度的选择
+
+经验公式 embedding_size = n_categories ** 0.25  (1/4次方)
+在大型语料上训练的词向量维度通常会设置的更大一些，比如 100~300
+如果根据经验公式，是不需要这么大的，比如 200W 词表的词向量维度只需要 200W ** 0.25 ≈ 37
