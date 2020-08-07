@@ -87,6 +87,10 @@
       url: config.url+url_for(post.path)
     }) %>
   <% } %>
+
+  <% if (theme.valine && theme.valine.appid && theme.valine.appkey){ %>
+      <%- partial('post/valine') %>
+    <% } %>
   
   <% if (theme.wangyiyun){ %>
   <%- partial('post/wangyiyun', {
