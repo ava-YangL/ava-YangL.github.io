@@ -24,3 +24,26 @@ tags:
 - chillax：（非正式）平静下来，放松 
   - I just wanna chillax tonight.
 - lung problems [lʌŋ]
+
+
+#### 9月9日
+- 缩写
+  - want to = wanna 
+  - going to =  gonna
+  - got to = gotta
+  - kind of = kinda
+- 重音/连读？？？
+- 10个尬聊句子
+  - Please allow me to introduce myself.(长辈)
+  - I think I'll have to go very soon. (预告要走)
+  - I'd like to report a harassment.
+    - [həˈræsmənt,ˈhærəsmənt] 骚扰 烦恼
+  - It's my pleasure meeting you. (尬聊完，收尾)
+  - How've you been lately? 最近怎么样 （同辈，不熟的人，加了lately更像在问，而不是客套的问问。
+  - I don't think I've met you yet. 好像是第一次见面，（好多人社交，我好像见过其他人了，但没有见过你
+  - I like your sweater, Where did you get it?
+  - It's kind of hot inside, isn't it?
+  - How was your presentation/Tokyo?
+  - Let me know how your new project goes.(到时候要跟我讲....也是要走的预告)
+  - I’ll see you around.(下次见， 之后会在看到你哦，party..
+ 
