@@ -99,6 +99,15 @@ gitment_oauth:
   client_id: ''           #client ID
   client_secret: ''       #client secret
 
+
+#8、Valine
+valine:
+ appid: QeAyBdTt17txT5fKGVgfoIpM-gzGzoHsz #Leancloud应用的appId
+ appkey: PIUGyc9TrQy2TrgLOokGfuIl #Leancloud应用的appKey
+ verify: false #验证码
+ notify: true #评论回复提醒
+ placeholder: 有话要说？ #评论框占位符
+
 # 样式定制 - 一般不需要修改，除非有很强的定制欲望…
 style:
   # 头像上面的背景颜色
