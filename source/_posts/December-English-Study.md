@@ -45,8 +45,8 @@ We're all made of shooting stars
   - Thanks.
   - They use phrases like 'Excuse me' and 'Thanks' to indicate that no **offense** [əˈfens] has been **taken**.
 - Situation 2
-  - I'm sorry, **I wasn't quite [kwaɪt] finished**. (quiet [ˈkwaɪət])
-  - Oh, please carry on!
+  - I'm sorry, **I wasn't quite [kwaɪt] finished**. (**quiet** [ˈkwaɪət])
+  - Oh, please **carry on**!
 - Situation 3
   - The **rising intonation** in the speaker's voice indicated that she has not finished speaking.
 - Situation 4
