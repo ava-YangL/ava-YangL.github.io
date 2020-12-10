@@ -2,6 +2,7 @@
 title: English Learning For Better Work
 date: 2020-09-08 21:43:27
 tags:
+- English
 ---
 
 
@@ -19,7 +20,7 @@ tags:
   - Airplane means an engine-driven fixed-wing aircraft heavier than air, that is supported in flight by the dynamic reaction of the air against its wings.
 - air pollution：空气污染
 - particulate 微粒的/微粒 
-  - particulate matter（物质 事件 有关系 要紧） 微粒物质；悬浮微粒
+  - particulate matter（物质 事件 有关系 要紧） 微粒物质；悬浮微粒 [pɑːrˈtɪkjələt,pɑːrˈtɪkjəleɪt] 
 - suburb [ˈsʌbɜːrb] ：郊区，边缘
 - chillax：（非正式）平静下来，放松 
   - I just wanna chillax tonight.
@@ -46,4 +47,6 @@ tags:
   - How was your presentation/Tokyo?
   - Let me know how your new project goes.(到时候要跟我讲....也是要走的预告)
   - I’ll see you around.(下次见， 之后会在看到你哦，party..
+
+  -  in bold 粗体
  
