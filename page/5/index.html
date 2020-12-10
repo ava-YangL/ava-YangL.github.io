@@ -138,126 +138,39 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-线性回归介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-集成学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/27/线性回归介绍/">线性回归介绍</a>
+      <a class="article-title" href="/2019/04/04/集成学习/">集成学习</a>
     </h1>
   
 
         
-        <a href="/2019/03/27/线性回归介绍/" class="archive-article-date">
-  	<time datetime="2019-03-27T07:40:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
+        <a href="/2019/04/04/集成学习/" class="archive-article-date">
+  	<time datetime="2019-04-04T07:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>还是对网上资料的整合提精，加一些自己的理解，可通过链接戳进原文。<br></p>
-        
-          <a class="article-more-a" href="/2019/03/27/线性回归介绍/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">回归</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-优化算法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/26/优化算法总结/">优化算法总结</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/26/优化算法总结/" class="archive-article-date">
-  	<time datetime="2019-03-26T07:23:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>参考链接：<a href="https://zhuanlan.zhihu.com/p/32626442" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/32626442</a><br>梯度下降是目前神经网络中使用最为广泛的优化算法之一。</p>
-<p>为什么梯度反方向是函数值局部下降最快的方向？ <a href="https://zhuanlan.zhihu.com/p/24913912" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/24913912</a><br>1 导数：可以当成曲线上的切线斜率，或者函数在该点的变化率。<br>直白的来说，导数代表了在自变量变化趋于无穷小的时候，函数值的变化与自变量变化的比值代表了导数，几何意义有该点的切线。物理意义有该时刻的（瞬时）变化率…</p>
-<p>2 偏导数：原来我们学到的偏导数指的是多元函数沿坐标轴的变化率，但是我们往往很多时候要考虑多元函数沿任意方向的变化率，那么就引出了方向导数.</p>
-<p>3 方向导数</p>
-<p>4 梯度方向是函数变化率最大的方向，梯度是方向导数取得最大值的方向，有一种通俗的的理解，梯度是导数的高维形式，导数是增长的方向，所以梯度其实是增长的方向，那么，梯度的反方向就是增长的反方向，下降。</p>
-<h4 id="Adam算法"><a href="#Adam算法" class="headerlink" title="Adam算法"></a>Adam算法</h4><ul>
-<li>是随机梯度下降算法的扩展</li>
-<li>Adaptive moment estimation，适应性矩估计。</li>
-<li>随机梯度下降保持<strong>单一的学习率</strong>更新所有的权重；Adam通过计算梯度的一阶矩估计和二阶矩估计为不同的参数设计独立的<strong>自适应性学习率</strong>。</li>
-<li>是适应行梯度算法（Adagrad，为每个参数保留一个学习率以提升在稀疏梯度上的性能）和均方根传播（RMSProp，基于权重梯度最近量级的均值为每一个参数适应性地保留学习率，意味着算法在非稳态和在线问题上有很优秀的性能）的优点集合。</li>
-<li>参数：alpha（学习率），beta1（一阶矩估计的指数衰减率，如0.9），beta2（二阶矩估计的指数衰减率，如0.999，该超参数在稀疏梯度（如cv，nlp）任务中应接近于1），epsilon（该参数非常小，如1E-8))。</li>
-<li>计算了梯度的指数移动平均，beta1和beta2控制了移动均值的衰减率。</li>
+        <h1 id="1-集成学习概述"><a href="#1-集成学习概述" class="headerlink" title="1 集成学习概述"></a>1 集成学习概述</h1><ul>
+<li>描述：多个学习器组合成性能更好的学习器。</li>
+<li>原因：不同模型在测试集有不同误差，平均来讲，集成模型能至少与任一成员表现一致；若<strong>成员误差独立</strong>，集成模型结果要显著好。</li>
 </ul>
-<p>下图参考来自：<a href="https://segmentfault.com/a/1190000012668819" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012668819</a></p>
-<div style="width: 600px; margin: auto"><img src="/2019/03/26/优化算法总结/1.png" alt="avater"></div>
-
-
+<h1 id="2-集成学习分类"><a href="#2-集成学习分类" class="headerlink" title="2 集成学习分类"></a>2 集成学习分类</h1><h3 id="1-Boosting"><a href="#1-Boosting" class="headerlink" title="1 Boosting"></a>1 Boosting</h3><ul>
+<li><strong>串行</strong>策略，学习器之间有<strong>依赖</strong>关系，新的学习器需要依赖旧的学习器生成。</li>
+<li>举例：AdaBoost、GBDT</li>
+<li><strong>需要解决问题</strong>：<ul>
+<li>每一轮如何改变数据的权值或概率分布？？？</li>
+<li>如何将弱分类器组合成强分类器？</li></ul></li></ul>
+        
+          <a class="article-more-a" href="/2019/04/04/集成学习/#more">more >></a>
+        
       
 
       
@@ -270,24 +183,13 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">优化算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识整理</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/机器学习//" class="article-tag-list-link color5">机器学习</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -317,29 +219,29 @@
 
 
   
-    <article id="post-Code" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-机器学习算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/22/Code/">Code</a>
+      <a class="article-title" href="/2019/03/31/机器学习算法/">机器学习算法</a>
     </h1>
   
 
         
-        <a href="/2019/03/22/Code/" class="archive-article-date">
-  	<time datetime="2019-03-22T06:31:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-22</time>
+        <a href="/2019/03/31/机器学习算法/" class="archive-article-date">
+  	<time datetime="2019-03-31T06:31:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>希望能每天刷一道题？？？<br></p>
+        <p>是对<a href="https://github.com/imhuay/Algorithm_Interview_Notes-Chinese" target="_blank" rel="noopener">Github</a>的转载整理，搬运工作，大家也可直接去原文观看。<br></p>
         
-          <a class="article-more-a" href="/2019/03/22/Code/#more">more >></a>
+          <a class="article-more-a" href="/2019/03/31/机器学习算法/#more">more >></a>
         
       
 
@@ -353,15 +255,79 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二分法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识整理</a>
         		</li>
-      		 
+      		
+		</ul>
+	</div>
+
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-牛客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/牛客/">牛客</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/牛客/" class="archive-article-date">
+  	<time datetime="2019-03-28T13:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天也要加油鸭。</p>
+        
+          <a class="article-more-a" href="/2019/03/28/牛客/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">牛顿法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">堆排序</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">牛客</a>
         		</li>
       		
 		</ul>
@@ -408,34 +374,34 @@
 
 
   
-    <article id="post-树的遍历" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-排序算法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/21/树的遍历/">树的遍历</a>
+      <a class="article-title" href="/2019/03/28/排序算法总结/">排序算法总结</a>
     </h1>
   
 
         
-        <a href="/2019/03/21/树的遍历/" class="archive-article-date">
-  	<time datetime="2019-03-21T08:48:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-21</time>
+        <a href="/2019/03/28/排序算法总结/" class="archive-article-date">
+  	<time datetime="2019-03-28T13:34:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ul>
-<li>递归的时候，深度优先用栈，广度优先用队列。</li>
-</ul>
-<h3 id="先序"><a href="#先序" class="headerlink" title="先序"></a>先序</h3><p>根节点——左——右的顺序。</p>
-<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">preOrder</span><span class="params">(Node * node)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(node)&#123;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;node-&gt;value;</span><br><span class="line">	preOrder(node-&gt;left);</span><br><span class="line">	preOrder(node-&gt;right);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2019/03/21/树的遍历/#more">more >></a>
-        
+        <h4 id="1-总结："><a href="#1-总结：" class="headerlink" title="1 总结："></a>1 总结：</h4><p>时间一样的：桶(n)、基数(n)、归并(nlogn)、堆(nlogn)、选择排序(n^2)<br>不稳定的：桶、快速、堆、希尔、选择<br><img src="/2019/03/28/排序算法总结/1.jpg" alt="avater"></p>
+<h4 id="归并算法："><a href="#归并算法：" class="headerlink" title="归并算法："></a>归并算法：</h4><h4 id="Top中的快排改进"><a href="#Top中的快排改进" class="headerlink" title="Top中的快排改进"></a>Top中的快排改进</h4><p><a href="https://bbs.csdn.net/topics/391545814" target="_blank" rel="noopener">https://bbs.csdn.net/topics/391545814</a><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetLeastNumbers</span><span class="params">(<span class="keyword">int</span>* input, <span class="keyword">int</span> n, <span class="keyword">int</span>* output, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (input == <span class="literal">NULL</span> || output == <span class="literal">NULL</span> || k &gt; n || n &lt;= <span class="number">0</span> || k &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> end = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> index = Partition(input, n, start, end);</span><br><span class="line">    <span class="keyword">while</span> (index != k - <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt; k - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            end = index - <span class="number">1</span>;</span><br><span class="line">            index = Partition(input, n, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            start = index + <span class="number">1</span>;</span><br><span class="line">            index = Partition(input, n, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i)</span><br><span class="line">        output[i] = input[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>再看看具体的代码，时间复杂度是On</p>
+<p>（1）有人说 因为每次递归只进入一边，所以实践复杂度为On<br>（2）有人说 快排必须低轨道logn层，求最小k个树只需要划分几次就可以找到index了<br>（3)恩，是这个道理。在回复别人的时候突然想通了，快排是必须要向下递归的，而上面这个并不需要递归，而是类似折半。<br>1+1/2+1/4+1/8+…&lt;2    ，o(2n)=o(n)，所以时间复杂度是o(n)。<br> (4) 快排的时间复杂度为啥是Onlogn：根据快排的实现方式，我们可以得出，最多可拆分logn层，因为每次都一分为二，所以2^k=n, k=logn,每一层最多交换n次，所以结果就是O(nlogn)</p>
+<h4 id="堆排序复杂度"><a href="#堆排序复杂度" class="headerlink" title="堆排序复杂度"></a>堆排序复杂度</h4><p> <a href="https://blog.csdn.net/loveliuzz/article/details/77618530" target="_blank" rel="noopener">https://blog.csdn.net/loveliuzz/article/details/77618530</a></p>
+<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; input,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=l;</span><br><span class="line">    <span class="keyword">int</span> j=r;</span><br><span class="line">    <span class="keyword">int</span> pos=input[l];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(input[i]&lt;=pos &amp;&amp; i&lt;=j)</span><br><span class="line">             i++;</span><br><span class="line">        <span class="keyword">while</span>(input[j]&gt;=pos &amp;&amp; i&lt;=j)</span><br><span class="line">             j--;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">            swap(input[i++],input[j--]);        </span><br><span class="line">    &#125;</span><br><span class="line">    swap(input[j],input[l]);</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">quicksort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; input,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(r&lt;=l)</span><br><span class="line">       <span class="keyword">return</span>; </span><br><span class="line">    <span class="keyword">int</span> mid=partition(input,l,r);</span><br><span class="line">    <span class="keyword">if</span>(l&lt;=(mid<span class="number">-1</span>)) quicksort(input,l,mid<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">if</span>((mid+<span class="number">1</span>)&lt;r)quicksort(input,mid+<span class="number">1</span>,r);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a=&#123;<span class="number">6</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    quicksort(a,<span class="number">0</span>,<span class="number">7</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p><a href="https://zhuanlan.zhihu.com/p/52884590?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=779712987186335744" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/52884590?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=779712987186335744</a></p>
+<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4>
       
 
       
@@ -447,109 +413,120 @@
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二叉树</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Code//" class="article-tag-list-link color5">Code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-卷积" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/19/卷积/">卷积</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/19/卷积/" class="archive-article-date">
-  	<time datetime="2019-03-19T08:07:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h3><ul>
-<li><a href="https://flat2010.github.io/2018/06/15/%E6%89%8B%E7%AE%97CNN%E4%B8%AD%E7%9A%84%E5%8F%82%E6%95%B0/" target="_blank" rel="noopener">可参考</a></li>
-</ul>
-<blockquote>
-<p>卷积核的参数是共享可以使得图像上的内容不受位置的影响，即图片中的猫不管是在图片的左上角或者右下角都应该被分类为猫，同时共享卷积核的参数可以大幅减少网络模型中的参数，降低运算的复杂度。<br></p></blockquote>
-        
-          <a class="article-more-a" href="/2019/03/19/卷积/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">深度学习</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础知识</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">卷积</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">排序算法总结</a>
         		</li>
       		
 		</ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Code//" class="article-tag-list-link color5">Code</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-DFS相关问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/03/28/DFS相关问题整理/">DFS相关问题整理</a>
+    </h1>
+  
+
+        
+        <a href="/2019/03/28/DFS相关问题整理/" class="archive-article-date">
+  	<time datetime="2019-03-28T10:55:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>感觉遇到这种题自己总是不会，整理下来希望能长长脑子。<br></p>
+        
+          <a class="article-more-a" href="/2019/03/28/DFS相关问题整理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础知识</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Code//" class="article-tag-list-link color5">Code</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -581,7 +558,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
     </nav>
   
 
@@ -709,10 +686,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
              
@@ -721,11 +694,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">优化算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">BN</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">单词</a>
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Develop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">优化算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -733,15 +714,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">卷积</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">知识整理</a>
+                <a href="javascript:void(0)" class="js-tag color2">排序算法总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">排序算法总结</a>
+                <a href="javascript:void(0)" class="js-tag color3">牛客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -753,7 +738,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">牛客</a>
+                <a href="javascript:void(0)" class="js-tag color5">知识整理</a>
               </li>
              
               <li class="article-tag-list-item">

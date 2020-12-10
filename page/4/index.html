@@ -138,38 +138,33 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-集成学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-人脸识别损失" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/04/集成学习/">集成学习</a>
+      <a class="article-title" href="/2019/06/13/人脸识别损失/">人脸识别损失</a>
     </h1>
   
 
         
-        <a href="/2019/04/04/集成学习/" class="archive-article-date">
-  	<time datetime="2019-04-04T07:10:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
+        <a href="/2019/06/13/人脸识别损失/" class="archive-article-date">
+  	<time datetime="2019-06-13T06:55:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-13</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-集成学习概述"><a href="#1-集成学习概述" class="headerlink" title="1 集成学习概述"></a>1 集成学习概述</h1><ul>
-<li>描述：多个学习器组合成性能更好的学习器。</li>
-<li>原因：不同模型在测试集有不同误差，平均来讲，集成模型能至少与任一成员表现一致；若<strong>成员误差独立</strong>，集成模型结果要显著好。</li>
+        <h5 id="1-人脸识别一般步骤："><a href="#1-人脸识别一般步骤：" class="headerlink" title="1 人脸识别一般步骤："></a>1 人脸识别一般步骤：</h5><ul>
+<li>找人脸</li>
+<li>对齐人脸</li>
+<li>识别（损失函数用于这一步骤）</li>
 </ul>
-<h1 id="2-集成学习分类"><a href="#2-集成学习分类" class="headerlink" title="2 集成学习分类"></a>2 集成学习分类</h1><h3 id="1-Boosting"><a href="#1-Boosting" class="headerlink" title="1 Boosting"></a>1 Boosting</h3><ul>
-<li><strong>串行</strong>策略，学习器之间有<strong>依赖</strong>关系，新的学习器需要依赖旧的学习器生成。</li>
-<li>举例：AdaBoost、GBDT</li>
-<li><strong>需要解决问题</strong>：<ul>
-<li>每一轮如何改变数据的权值或概率分布？？？</li>
-<li>如何将弱分类器组合成强分类器？</li></ul></li></ul>
         
-          <a class="article-more-a" href="/2019/04/04/集成学习/#more">more >></a>
+          <a class="article-more-a" href="/2019/06/13/人脸识别损失/#more">more >></a>
         
       
 
@@ -178,17 +173,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识整理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -219,29 +203,29 @@
 
 
   
-    <article id="post-机器学习算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-C" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/31/机器学习算法/">机器学习算法</a>
+      <a class="article-title" href="/2019/04/12/C/">C++</a>
     </h1>
   
 
         
-        <a href="/2019/03/31/机器学习算法/" class="archive-article-date">
-  	<time datetime="2019-03-31T06:31:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
+        <a href="/2019/04/12/C/" class="archive-article-date">
+  	<time datetime="2019-04-12T08:32:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>是对<a href="https://github.com/imhuay/Algorithm_Interview_Notes-Chinese" target="_blank" rel="noopener">Github</a>的转载整理，搬运工作，大家也可直接去原文观看。<br></p>
+        <h2 id="1-关于多态"><a href="#1-关于多态" class="headerlink" title="1 关于多态"></a>1 关于多态</h2><h3 id="大定义"><a href="#大定义" class="headerlink" title="大定义"></a>大定义</h3><p>多态：一种形式多种状态<br>面向对象编程的两个主要特征：继承、多态<br>C++ 中是通过间接利用“指向父类”的指针或引用来操作其子类对象，从而达到多态的目的；如果直接操作某个实例，那么多态将无从谈起<br>具体来说，多态是通过动态绑定机制，达到在运行时确定实际被调用的是哪个子类类型，进而调用对应的 override 方法<br></p>
         
-          <a class="article-more-a" href="/2019/03/31/机器学习算法/#more">more >></a>
+          <a class="article-more-a" href="/2019/04/12/C/#more">more >></a>
         
       
 
@@ -250,17 +234,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">知识整理</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -291,29 +264,33 @@
 
 
   
-    <article id="post-牛客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Dropout" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/28/牛客/">牛客</a>
+      <a class="article-title" href="/2019/04/09/Dropout/">Dropout</a>
     </h1>
   
 
         
-        <a href="/2019/03/28/牛客/" class="archive-article-date">
-  	<time datetime="2019-03-28T13:47:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+        <a href="/2019/04/09/Dropout/" class="archive-article-date">
+  	<time datetime="2019-04-09T05:26:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天也要加油鸭。</p>
+        <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://github.com/ava-YangL/Algorithm_Interview_Notes-Chinese/edit/master/A-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/A-%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E5%9F%BA%E7%A1%80.md" target="_blank" rel="noopener">Github of imhuay</a></p>
+<h2 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h2><h3 id="Bagging-集成方法"><a href="#Bagging-集成方法" class="headerlink" title="Bagging 集成方法"></a>Bagging 集成方法</h3><ul>
+<li><p><strong>集成方法</strong>的主要想法是分别训练不同的模型，然后让所有模型<strong>表决</strong>最终的输出。</p>
+<p>集成方法奏效的原因是不同的模型<strong>通常不会</strong>在测试集上产生相同的误差。</p>
+<p>集成模型能至少与它的任一成员表现得一样好。<strong>如果成员的误差是独立的</strong>，集成将显著提升模型的性能。</p></li></ul>
         
-          <a class="article-more-a" href="/2019/03/28/牛客/#more">more >></a>
+          <a class="article-more-a" href="/2019/04/09/Dropout/#more">more >></a>
         
       
 
@@ -322,29 +299,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">牛客</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Code//" class="article-tag-list-link color5">Code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -374,34 +329,34 @@
 
 
   
-    <article id="post-排序算法总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-SVM与LR" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/28/排序算法总结/">排序算法总结</a>
+      <a class="article-title" href="/2019/04/08/SVM与LR/">SVM与LR</a>
     </h1>
   
 
         
-        <a href="/2019/03/28/排序算法总结/" class="archive-article-date">
-  	<time datetime="2019-03-28T13:34:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+        <a href="/2019/04/08/SVM与LR/" class="archive-article-date">
+  	<time datetime="2019-04-08T15:32:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="1-总结："><a href="#1-总结：" class="headerlink" title="1 总结："></a>1 总结：</h4><p>时间一样的：桶(n)、基数(n)、归并(nlogn)、堆(nlogn)、选择排序(n^2)<br>不稳定的：桶、快速、堆、希尔、选择<br><img src="/2019/03/28/排序算法总结/1.jpg" alt="avater"></p>
-<h4 id="归并算法："><a href="#归并算法：" class="headerlink" title="归并算法："></a>归并算法：</h4><h4 id="Top中的快排改进"><a href="#Top中的快排改进" class="headerlink" title="Top中的快排改进"></a>Top中的快排改进</h4><p><a href="https://bbs.csdn.net/topics/391545814" target="_blank" rel="noopener">https://bbs.csdn.net/topics/391545814</a><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">GetLeastNumbers</span><span class="params">(<span class="keyword">int</span>* input, <span class="keyword">int</span> n, <span class="keyword">int</span>* output, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (input == <span class="literal">NULL</span> || output == <span class="literal">NULL</span> || k &gt; n || n &lt;= <span class="number">0</span> || k &lt;= <span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> start = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> end = n - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> index = Partition(input, n, start, end);</span><br><span class="line">    <span class="keyword">while</span> (index != k - <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt; k - <span class="number">1</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            end = index - <span class="number">1</span>;</span><br><span class="line">            index = Partition(input, n, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            start = index + <span class="number">1</span>;</span><br><span class="line">            index = Partition(input, n, start, end);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i)</span><br><span class="line">        output[i] = input[i];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>再看看具体的代码，时间复杂度是On</p>
-<p>（1）有人说 因为每次递归只进入一边，所以实践复杂度为On<br>（2）有人说 快排必须低轨道logn层，求最小k个树只需要划分几次就可以找到index了<br>（3)恩，是这个道理。在回复别人的时候突然想通了，快排是必须要向下递归的，而上面这个并不需要递归，而是类似折半。<br>1+1/2+1/4+1/8+…&lt;2    ，o(2n)=o(n)，所以时间复杂度是o(n)。<br> (4) 快排的时间复杂度为啥是Onlogn：根据快排的实现方式，我们可以得出，最多可拆分logn层，因为每次都一分为二，所以2^k=n, k=logn,每一层最多交换n次，所以结果就是O(nlogn)</p>
-<h4 id="堆排序复杂度"><a href="#堆排序复杂度" class="headerlink" title="堆排序复杂度"></a>堆排序复杂度</h4><p> <a href="https://blog.csdn.net/loveliuzz/article/details/77618530" target="_blank" rel="noopener">https://blog.csdn.net/loveliuzz/article/details/77618530</a></p>
-<h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; input,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=l;</span><br><span class="line">    <span class="keyword">int</span> j=r;</span><br><span class="line">    <span class="keyword">int</span> pos=input[l];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=j)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">while</span>(input[i]&lt;=pos &amp;&amp; i&lt;=j)</span><br><span class="line">             i++;</span><br><span class="line">        <span class="keyword">while</span>(input[j]&gt;=pos &amp;&amp; i&lt;=j)</span><br><span class="line">             j--;</span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)</span><br><span class="line">            swap(input[i++],input[j--]);        </span><br><span class="line">    &#125;</span><br><span class="line">    swap(input[j],input[l]);</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span>  <span class="title">quicksort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; input,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(r&lt;=l)</span><br><span class="line">       <span class="keyword">return</span>; </span><br><span class="line">    <span class="keyword">int</span> mid=partition(input,l,r);</span><br><span class="line">    <span class="keyword">if</span>(l&lt;=(mid<span class="number">-1</span>)) quicksort(input,l,mid<span class="number">-1</span>);</span><br><span class="line">    <span class="keyword">if</span>((mid+<span class="number">1</span>)&lt;r)quicksort(input,mid+<span class="number">1</span>,r);  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; a=&#123;<span class="number">6</span>,<span class="number">5</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">2</span>,<span class="number">4</span>&#125;;</span><br><span class="line">    </span><br><span class="line">    quicksort(a,<span class="number">0</span>,<span class="number">7</span>);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">8</span>;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">cout</span>&lt;&lt;a[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h4><p><a href="https://zhuanlan.zhihu.com/p/52884590?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=779712987186335744" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/52884590?utm_source=wechat_session&amp;utm_medium=social&amp;utm_oi=779712987186335744</a></p>
-<h4 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h4>
+        <h2 id="1-相同"><a href="#1-相同" class="headerlink" title="1 相同"></a>1 相同</h2><ul>
+<li>都是分类算法，除了SVR。。。</li>
+<li>如果不考虑核函数，LR和SVM都是线性分类算法，分类决策面都是线性的。（LR和SVM其实都可以用核函数），决策树可是非线性模型。</li>
+<li>都是监督学习算法。</li>
+<li>都是辨别模型。（辨别模型生成一个P(Y|X)的预测模型，生成模型计算联合概率分布P(Y,X)利用<strong>贝叶斯公式</strong>转化为条件概率），也就是辨别模型不会计算联合概率分布，生成模型更厉害一些，直接去找这个数据是怎么生成的。</li></ul>
+        
+          <a class="article-more-a" href="/2019/04/08/SVM与LR/#more">more >></a>
+        
       
 
       
@@ -409,33 +364,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础知识</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">排序算法总结</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Code//" class="article-tag-list-link color5">Code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -465,29 +394,31 @@
 
 
   
-    <article id="post-DFS相关问题整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-梯度训练算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/28/DFS相关问题整理/">DFS相关问题整理</a>
+      <a class="article-title" href="/2019/04/08/梯度训练算法/">梯度训练算法</a>
     </h1>
   
 
         
-        <a href="/2019/03/28/DFS相关问题整理/" class="archive-article-date">
-  	<time datetime="2019-03-28T10:55:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+        <a href="/2019/04/08/梯度训练算法/" class="archive-article-date">
+  	<time datetime="2019-04-08T14:58:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>感觉遇到这种题自己总是不会，整理下来希望能长长脑子。<br></p>
+        <h3 id="Batch-GD"><a href="#Batch-GD" class="headerlink" title="Batch-GD"></a>Batch-GD</h3><p>每次迭代的梯度方向由所有训练样本共同投票决定，计算的是损失函数在整个训练集上的梯度方向。</p>
+<h3 id="Mini-batch-GD"><a href="#Mini-batch-GD" class="headerlink" title="Mini-batch-GD"></a>Mini-batch-GD</h3><p>每个mini batch有b个样本</p>
+<h3 id="Stochastic-GD"><a href="#Stochastic-GD" class="headerlink" title="Stochastic- GD"></a>Stochastic- GD</h3><p>每个mini batch有1个样本<br></p>
         
-          <a class="article-more-a" href="/2019/03/28/DFS相关问题整理/#more">more >></a>
+          <a class="article-more-a" href="/2019/04/08/梯度训练算法/#more">more >></a>
         
       
 
@@ -496,37 +427,7 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">基础知识</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DFS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Leetcode</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Code//" class="article-tag-list-link color5">Code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -558,7 +459,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -686,10 +587,6 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">BN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">DFS</a>
               </li>
              
@@ -698,11 +595,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">优化算法</a>
+                <a href="javascript:void(0)" class="js-tag color3">BN</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">单词</a>
+                <a href="javascript:void(0)" class="js-tag color3">English</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Develop</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">优化算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -710,15 +615,19 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单词</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">卷积</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">知识整理</a>
+                <a href="javascript:void(0)" class="js-tag color2">排序算法总结</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">排序算法总结</a>
+                <a href="javascript:void(0)" class="js-tag color3">牛客</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -730,7 +639,7 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">牛客</a>
+                <a href="javascript:void(0)" class="js-tag color5">知识整理</a>
               </li>
              
               <li class="article-tag-list-item">
