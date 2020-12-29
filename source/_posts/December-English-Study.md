@@ -104,5 +104,38 @@ We're all made of shooting stars
 
 
 
+  ### 12.29
+
+- <font color=red face="微软雅黑">**Word**</font>
+- jargon [ˈdʒɑːrɡən] n. 行话，术语；黄锆石
+  - I'm sorry to interrupt, but I get lost in the computer jargon!
+- technically
+  - according to the facts
+  - Technically, computers can crash for a number of reasons.
+- butt [bʌt]  n. 屁股；烟头；笑柄；靶垛；粗大的一端 vt. 以头抵撞；碰撞
+  - butt in: to interrupt
+  - I apologize for butting in again, but could you give a slightly more intuitive [ɪnˈtuːɪtɪv] explanation?
+- intuitive [ɪnˈtuːɪtɪv] adj
+  - easy to understand
+- grasp [ɡræsp]
+  - to understand
+  - I grasped that idea very quickly.
+  - The danger is that the public won't grasp what sets our product apart from...
+- piece of cake
+  - sth easy to do
+  - Beating him at chess [tʃes] 国际象棋 西洋棋 was a piece of cake.
+
+- <font color=red face="微软雅黑">**Explanation**</font>
+- Politely [pəˈlaɪtli] Interrupting
+  - I'm sorry to interrupt, but I get lost in the computer jargon!
+  - I apologize for butting in again.
+  - Excuse me, might I add to that?
+- Here, someone interrupts the speaker in order to correct them.
+  -  Do you mind if I jump in here? It's actually **a bit** more complicated than that.
+  - avoid appearint too critical by using phrases like "a bit" or "a little"
+  - If I **could** just say, I don't think that will be a big problem.
+  - **Cound** I interject vt. 突然插入；插嘴 at this point?
+  - **Might** I interject at this point?
+- intonation  [ˌɪntəˈneɪʃn]  n. 声调，语调；语音的抑扬
 
  
