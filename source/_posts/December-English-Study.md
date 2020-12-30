@@ -96,10 +96,19 @@ We're all made of shooting stars
   - **Would you mind repeating** that?
   - Can you say that again?
   - 'Can Would and could' **soften** the questions and make them seem less **harsh**严厉的之类的意思 or direct
-- 3
+- 2
   - We **seem to have a bad connection**. What was that **again**? [əˈɡen,əˈɡeɪn] 
   - Sorry, **your're breaking up**. What was the **last thing** you said?
   - **I'm afraid** this line isn't very good. **Is it possible to** repeat **what you just said**?
+- 3
+  - Shipment from another supplier, you say? You want to find a different supplier? **Can you confirm that's what you said**?
+  - Repeats what they think was said and then asks for confirmation. First repeat what was said work-for-word, then they paraphrase ['perə.freɪz] 释义 (n. v.) to **make certain**. 保证 弄清楚；弄确实；确定
+- 4
+  - Restating  重申 informaiton that wasn't understood.
+  - No problem. Let me **circle back** to **the reason for** my call. **As I was saying**, we're **doing great** here.
+- 5
+  - Use techniques to help listeners understand you.
+  - pause between sentences and emphasizes ['emfə.saɪz] key words.
 
 
 
