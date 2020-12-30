@@ -138,4 +138,77 @@ We're all made of shooting stars
   - **Might** I interject at this point?
 - intonation  [ˌɪntəˈneɪʃn]  n. 声调，语调；语音的抑扬
 
+
+
+
+  ### 12.30
+
+- <font color=red face="微软雅黑">**Word**</font>
+- all set 
+  - prepared, ready to go
+  - Yes, I think we're all set.
+- dawn on  [dɔn]
+  - dawn n. 黎明；曙光；拂晓；破晓
+  - dawn v.开始；变得明朗；开始清楚
+  - to become clear
+  - **It just dawned on me** I might have come across as rude. 只是我恍然大悟我可能rude了
+- cultivate ['kʌltɪ.veɪt] 培育；栽培；耕作；种植
+  - to encourage and care for
+  - It's important to cultivate good relationships with "the authorities".
+- authorities [ɔ'θɔrəti]
+  - the bosses, the people who are in power
+- obnoxious 极讨厌的；可憎的；令人作呕的  [ɑb'nɑkʃəs]
+  - not nice
+  - Helena felt very upset because someone in the audience made an obnoxious noise.
+- inappropriate 不合时宜的；不适用的；不适合的；不正当的   [ˌinəˈproʊprɪərt]
+  - It's so inappropriate!
+- at hand
+  - close by, being discussed now
+  - Now, back to **the matter at hand**, your departmemt...
+  - Before we deal with **the matter at hand**, could I just ask if anyone has Brian's phone number?
+- personal
+  - not related to work
+  - He is on a personal call and we've run out of time.
+  - write personal e-mails at work.
+
+- <font color=red face="微软雅黑">**Explanation**</font>
+- Speaking os Mr.Jones, that's him now. Sorry, I have to take this.
+- I apologize for the interruption. It juse dawned on me I might have come across as rude. 
+- No, not at all! It's important to cultivate good ralationship with "the authorities". You can not leave your boss waiting on the line!
+- I just dont want to seem like one of those people who **drop** whatever they are doing whenever their phone rings - it's so inappropriate!
+- That's my wife. Excuse me, Theresa, I should get this. Can you excuse me a moment? (inappropriate to do this)
+
  
+- <font color=red face="微软雅黑">**Word**</font>
+- respective 分别的；各自的 
+  - own
+  - The managers all returned to their respective offices.
+- pull rank 摆架子；利用职权压制；滥用职权
+  - to use one's  position of power in an organization.
+  - Leo pulled rank and told everyone to sit down and be quiet.
+- silent adj. 不说话的；沉默的；很少说话的；不爱说话的 verb
+  - to switch off the sound(of a cell phone)
+  - I should remember to silent it.
+  - I forgot to silent my phone and was really embarrassed when it rang during the meeting.
+- ringtone（尤指移动电话的） 铃声 [ 'rɪŋɡ.toʊn]
+  - That's really loud ringtone you have there.
+- tendency
+  - a usual behavior
+  - I have a tendency to forget to put my phone away.
+  - Helen had a tendency to arrive early for most meetings.
+- etiquette ['etɪ.ket] n. 礼仪
+  - I know it's bad etiquette to leave it on the table.
+- sincerely [sɪn'sɪrli]
+  - I'm sincerely sorry, Frank! （ adding "sincerely" to make the apology stronger.
+  - Dave sincerely apologized for forgetting the meeting.
+- down to business
+  - work, do a job
+  - Three people were late, so we didn't get down to business until after lunch.
+
+
+- <font color=red face="微软雅黑">**Explanation**</font>
+- Understand phone etiquette.
+- Sorry about that, I should remember to silent it.
+- Choose a standard ringtone that is't silly or disruptive. 引起混乱的；扰乱性的；破坏性的
+- Apologize and accept apologies for mistakes in etiquette.
+- Can accepts the apology by saying "That's OK." / "No problem." / "Don't worry about it." / "It's no big deal."
