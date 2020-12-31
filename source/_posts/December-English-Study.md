@@ -221,3 +221,54 @@ We're all made of shooting stars
 - Choose a standard ringtone that is't silly or disruptive. 引起混乱的；扰乱性的；破坏性的
 - Apologize and accept apologies for mistakes in etiquette.
 - Can accepts the apology by saying "That's OK." / "No problem." / "Don't worry about it." / "It's no big deal."
+
+
+
+
+  ### 12.31
+
+- <font color=red face="微软雅黑">**Word**</font>
+- shoot verb
+  - a slang [slæŋ](n.v.俚语，用粗话烂骂) used to tell someone to start talking or expressing his or her ideas.
+  - I'm listening. **Shoot**.
+  - Feel free to **jump in with any ideas** you have. Mary, you have something? Great. **Shoot**.
+-  fiddle verb
+  - to touch or play with sth, often to try to take care of it or fix it a tiny bit.
+  - She have to **fiddle with** the bill.
+  - Jintzu **fiddled with** her hair one more time before leaving the house on her date.
+- bring on
+  - to hire or ask to join a team or group
+  - I'd like to bring on some more people to get all this work done.
+  - I was brought on beacuse of my experience in client relations, but I keep finding myself doing random tasks like making lunch reservations.
+- interface
+  - to deal or speak directly to another person
+  - I **used to be** interfacing with the clients myself.**Now**, I'm relegated to talking only to the waitstaff.
+- relegate  ['relə.ɡeɪt]
+  - to make someone do a worse task or give someone a position with less responsibility
+  - After getting caught sleeping in his office, Jose was relegated to a cubicle ['kjubɪk(ə)l]大房间分隔出来的小房间 in the middle of the door.
+- I hear you
+  - an informal phrase used to show you understand what another person is saying and share his or her position or views.
+  - I hear you and know very well that you are qualified to do more than you have been doing.
+  - I know you're frastrated....I hear you. I am frastrated as well.
+- grunt work
+  - simple a task that is boring and doesn't require any expertise or experience
+  - Interns often have to do grunt work, like making copies and taking inventory of office supplies.
+- sign up for
+  -  to agree to do sth
+  - When I said I was willing to travel some for work, I didn't think I'd be signing up for traveling four to five times a month!
+- all things considered 从整体来看；就各方面而言；总而言之
+- pinpoint
+  - v.确定；精准定位
+  - n.针尖
+  - adj.精准的
+  - pinpoint the exact location of...
+  - pinpoint some more appropriate jobs for you.
+
+
+
+- <font color=red face="微软雅黑">**Explanation**</font>
+- To be polite when addressing what makes you uncomfortable...
+  - Well, I'm a little concerned that I'm not .....
+  - It bothers me...
+  - I'm worried that...
+- Can we please talk privately? I'm worried that...
